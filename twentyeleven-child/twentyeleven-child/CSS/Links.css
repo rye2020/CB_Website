@@ -1,0 +1,28 @@
+/*---------------------USEFUL LINKS STYLING-----------------------------*/
+
+/*----------------------------------------------------------------------*/
+/*---------------------FORMAT USEFUL LINKS------------------------------*/
+/*----------------------------------------------------------------------*/
+
+table.Ulink {
+      background-color: white; 
+      float: left; 
+      width: 100%; 
+      border-collapse: collapse; 
+      table-layout: fixed;
+}
+table.Ulink td {
+      vertical-align:top;
+      border-width: 2px;
+      border-color: grey; 
+      padding-left: 1em; 
+      padding-bottom: 1em;
+      border-bottom-style:none;
+      border-left-style:none; 
+      border-right-style:solid; 
+      border-top-style:none;
+}
+table.Ulink td:last-of-type {
+      border-right-style:none;
+}
+/*! ---END FORMAT USEFUL LINKS----*/
