@@ -1,4 +1,4 @@
-ed<style scoped>
+<style scoped>
 div#secondary {margin-right:0;}
 </style>
 <aside style="font-size:small">
