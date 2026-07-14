@@ -2,7 +2,7 @@
 div#secondary {margin-right:0;}
 </style>
 <aside style="font-size:small">
-<p style="margin:0; text-decoration:underline;"><strong>Data Filters: Select</strong></p>
+<p style="margin:0; text-decoration:underline;"><strong>Data Filters: </strong></p>
 <style scoped>
 	select {
 		float: right;
