@@ -1,0 +1,46 @@
+/*------------------FILTERING CB TABLES STYLING-------------------------*/
+
+/*----------------------------------------------------------------------*/
+/*---------------------FORMAT CB QUERIES TABLE--------------------------*/
+/*----------------------------------------------------------------------*/
+
+h1.t1CBQueries {
+	margin-bottom: 0;
+	margin-top: 0;
+	text-align: center;
+	font-size: 24px;
+}
+
+table.t1CBQueries {
+	margin:0 0 0 0%;
+	width: 100%;
+	border-collapse: collapse;
+        background-color: white;
+}
+
+table.t1CBQueries th {
+	color: white;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: blue;
+	font-size: 100%;
+	height: 20px;
+}
+table.t1CBQueries tr:nth-child(even) {
+	background-color: LightGray;
+}
+table.t1CBQueries td {
+	vertical-align:top;
+	font-size: 90%;
+	border-bottom-style: solid;
+	border-top-style: solid;
+	border-color: grey;
+	border-width: 1px;
+}
+table.t1CBQueries td:nth-child(4) {   /* align currency center  */
+        text-align: center;
+}
+table.t1CBQueries td:nth-child(5) {   /* align query left  */
+        text-align: left;
+}
+/*! ---END FORMAT CB QUERIES TABLE---*/

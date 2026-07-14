@@ -1,0 +1,43 @@
+
+/*------------------------URL TABLE STYLING-----------------------------*/
+/*----------------------------------------------------------------------*/
+/*---------------------FORMAT USD ISSUER URL TABLES---------------------*/
+/*----------------------------------------------------------------------*/
+
+h1.t1USDI {
+	margin-bottom: 0;
+	margin-top: 0;
+	text-align: center;
+	font-size: 24px;
+}
+
+table.t1USDI {
+	margin:0 0 0 0%;
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+table.t1USDI th {
+	color: white;
+	text-align: center;
+	vertical-align: bottom;
+	background-color: blue;
+	font-size: 16px;
+	height: 20px;
+}
+table.t1USDI th:first-child {
+	width: 25%;
+	background-color: green;
+}
+
+table.t1USDI td {
+	text-align: left;
+	vertical-align:top;
+	font-size: 12px;
+	border-bottom-style: solid;
+	border-top-style: solid;
+	border-color: grey;
+	border-width: 1px;
+}
+/*! ---END FORMAT USD ISSUER URLS----*/
