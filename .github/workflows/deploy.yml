@@ -1,0 +1,24 @@
+name: Deploy to Bluehost
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy via rsync over SSH
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+          REMOTE_HOST: 129.121.85.210
+          REMOTE_USER: uscovere
+          REMOTE_PORT: 22
+          SOURCE: "./"
+          TARGET: "/public_html/wp-content/themes/twentyeleven-child/"
+          ARGS: "-avzr --delete --exclude='.git/' --exclude='.github/' --exclude='.gitignore'"
