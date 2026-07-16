@@ -27,7 +27,7 @@ $legacy = "";
 $title = "Selected by ";
      if ( isset( $_POST['Submit1'] ) ) { 
  $like = "WHERE ";
-$issuer = $_POST['issuerinterest'];
+$issuer = $_POST['issuerselect'];
      if ($issuer !== "") {         
 	$like = $like."Issuer LIKE '%".$issuer."%'";
 	$title = $title."Issuer ";
