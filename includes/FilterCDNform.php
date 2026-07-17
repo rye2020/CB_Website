@@ -17,7 +17,7 @@ div#secondary {margin-right:0;}
 	}
 	</style>
 <form name='CDNinterest' action='<?php echo esc_url(admin_url('admin-post.php')); ?>' method='POST'>
-<div style="display:grid; gap: .2em; grid-rows: 7px;">
+<div class="data-filter-container">
 <?php include ( get_stylesheet_directory() . '/includes/CDN_Issuers.php');
 	include ( get_stylesheet_directory() . '/includes/mat_year.php'); 
 ?>
