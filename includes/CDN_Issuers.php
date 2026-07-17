@@ -1,5 +1,5 @@
 <div class="filter_select"><label for='issuerinterest'>Issuer</label>
-<select name='issuerinterest' style="width:60%;">
+<select name='issuerselect' style="width:60%;">
 <option value=''> </option>
 <option value='Bank of Montreal'>Bank of Montreal</option>
 <option value='Bank of Nova Scotia'>Bank of Nova Scotia</option>
