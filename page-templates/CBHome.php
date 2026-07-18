@@ -56,7 +56,7 @@ get_header();
 				<hr class="Fhspace" style="clear: both; margin-top: 3px;">
 
 				<div>
-					<br /><strong>See all the data</strong> on U.S.$ and Canadian bank covered bond activity since 2007
+					<br /><strong>See all the data</strong> on U.S.$ and Canadian bank covered bond activity since 2018
 					at
 					<a href="CBaggregate/">Data Tables</a>.
 				</div>

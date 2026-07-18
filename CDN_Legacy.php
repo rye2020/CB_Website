@@ -5,7 +5,7 @@
  *
  * This is the template that displays the 
  * table of CDN issuance from SQL .
- *   redisigned from the first version 
+ *   redesigned from the first version 
  *
  *
  * @package WordPress
