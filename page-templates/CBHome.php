@@ -56,7 +56,7 @@ get_header();
 				<hr class="Fhspace" style="clear: both; margin-top: 3px;">
 
 				<div>
-					<br /><strong>See all the data</strong> on U.S.$ and Canadian bank covered bond activity since 2018 
+					<br /><strong>See all the data</strong> on U.S.$ and Canadian bank covered bond activity since 2007 
 					at
 					<a href="CBaggregate/">Data Tables</a>.
 				</div>
@@ -68,7 +68,7 @@ get_header();
 					<br /><strong>See Mayer Brown's <a
 							href="/wp-content/uploads/2026/02/At-A-Glance-Covered-Bonds-February-2026.pdf" target="blank"
 							rel="noopener noreferrer"><u>Covered Bonds - At A Glance</u></a> for U.S.$ covered bond
-						statistics for the period 2010 through 2025.</strong>
+						statistics for the period 2018 through 2025.</strong>
 				</div>
 				<div style="float:right; width:26%;">
 					<a href="/wp-content/uploads/2026/02/At-A-Glance-Covered-Bonds-February-2026.pdf" target="blank" rel="noopener noreferrer">
