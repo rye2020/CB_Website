@@ -4,6 +4,7 @@
 <option value='Bank of Montreal'>Bank of Montreal</option>
 <option value='Bank of Nova Scotia'>Bank of Nova Scotia</option>
 <option value='Barclays Bank PLC'>Barclays Bank PLC</option>
+<option value='Bawag Bank'>Bawag Bank</option>
 <option value='Bayerische Landesbank'>Bayerische Landesbank</option>
 <option value='Canadian Imperial Bank of Commerce'>Canadian Imperial Bank of Commerce</option>
 <option value='Cie Financement Foncier'>Cie Financement Foncier</option>
