@@ -35,7 +35,7 @@ $file = basename( __FILE__ ).PHP_EOL;   //save the file name
  include ( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
  ?>
 
-<div id=top >
+<div id=top style="padding-left:20px;">
 	<div style="padding-right:20px;">
 	
 <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 12/26/2025</p>
