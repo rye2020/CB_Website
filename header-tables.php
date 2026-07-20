@@ -42,12 +42,15 @@
 		if ( jmWrap !== null) {
 		var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 		var myDiv = document.getElementById('jm-filter');
+		var myTopDiv = document.getElementById('top');
 		let orientationType = screen.orientation.type; // e.g., "portrait-primary", "landscape-secondary"
 		if(isMobile) {
 			if (orientationType.includes ("portrait")) {
 				myDiv.remove();
+				myTopDiv.style.paddingLeft = "10px";
 			} else {
 			if (!myDiv){
+				myTopDiv.style.paddingLeft = "40px";
 				myWrap.innerHTML = `
 <div id="jm-filter" style="width:250px; ">
 	<br><br><br><br>
@@ -64,11 +67,13 @@
   function jmMobile() {
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var myDiv = document.getElementById('jm-filter');
+	var myTopDiv = document.getElementById('top')';
     var tbHead = document.getElementById('tbl-head');
     const jmWidth = window.innerWidth;
     
     if (isMobile && jmWidth < 600) {
         myDiv.remove();         // Remove filters and recent posts
+		myTopDiv.style.paddingLeft = "10px";
     } 
 }
 	</script>
