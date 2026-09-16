@@ -128,7 +128,10 @@ date_default_timezone_set("America/New_York");
 $date = date ('Y-m-d H:i:s');
 if ($table == "") {return;}
 $colnames = [];
-$query = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS ORDER BY ORDINAL_POSITION WHERE TABLE_NAME="'.$table.'"';
+$query = $wpdb->prepare(
+    'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME=%s ORDER BY ORDINAL_POSITION',
+    $table
+);
 $colnames = $wpdb->get_results($query, ARRAY_N);
 $zcol = count($colnames);
 
