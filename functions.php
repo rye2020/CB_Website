@@ -134,7 +134,7 @@ $query = $wpdb->prepare(
      ORDER BY ORDINAL_POSITION',
     $table
 );
-$colnames = $wpdb->get_results($query, ARRAY_N);
+$colnames = $wpdb->get_results("SHOW COLUMNS FROM `$table`", ARRAY_N);
 $zcol = count($colnames);
 
 // Test for table having currency sign 
