@@ -120,7 +120,7 @@ function add_my_post_types_to_query( $query ) {
 *----------------------------------------------------------------------------------------
 */
 function jrm_get_table ($table, $like, $sum, $col, $index = null, $orderby = null, $skip = null, $comments = null, $ours = null){
- 
+ echo '<!-- CODE VERSION TEST 12345 -->';
 global $wpdb;
  
 $total = 0;
