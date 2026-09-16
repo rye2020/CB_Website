@@ -3,7 +3,7 @@
 *
 *
 * 
- * Twenty Eleven-Child functions and definitions  
+ * Twenty Eleven-Child functions and definitions 
 *
 * Sets up the theme and provides some helper functions. Some helper functions
 * are used in the theme as custom template tags. Others are attached to action and
