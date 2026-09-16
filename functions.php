@@ -129,7 +129,9 @@ $date = date ('Y-m-d H:i:s');
 if ($table == "") {return;}
 $colnames = [];
 $query = $wpdb->prepare(
-    'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME=%s ORDER BY ORDINAL_POSITION',
+    'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
+     WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s
+     ORDER BY ORDINAL_POSITION',
     $table
 );
 $colnames = $wpdb->get_results($query, ARRAY_N);
