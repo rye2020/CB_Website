@@ -134,7 +134,11 @@ $query = $wpdb->prepare(
      ORDER BY ORDINAL_POSITION',
     $table
 );
+error_log('RUNTIME DB: ' . $wpdb->get_var('SELECT DATABASE()'));
+error_log('RUNTIME HOST: ' . DB_HOST);
+error_log('RUNTIME TABLE PARAM: ' . $table);
 $colnames = $wpdb->get_results("SHOW COLUMNS FROM `$table`", ARRAY_N);
+error_log('RUNTIME COLNAMES: ' . print_r($colnames, true));
 $zcol = count($colnames);
 
 // Test for table having currency sign 
