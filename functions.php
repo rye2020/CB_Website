@@ -141,6 +141,10 @@ $colnames = $wpdb->get_results("SHOW COLUMNS FROM `$table`", ARRAY_N);
 error_log('RUNTIME COLNAMES: ' . print_r($colnames, true));
 $zcol = count($colnames);
 
+error_log('LOG DESTINATION CHECK');
+var_dump(ini_get('error_log'));
+var_dump(ini_get('log_errors'));
+
 // Test for table having currency sign 
 $currency = 'no';
 if ($colnames[5][0] == 'Currency') {
