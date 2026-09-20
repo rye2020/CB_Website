@@ -184,6 +184,7 @@ $zcol = count($colnames);
         }
         notours:
     }
+    echo '</tbody>';
     $cols = 11;
     if ($ours == 'Y') {
         $cols++;
@@ -191,7 +192,7 @@ $zcol = count($colnames);
     if ($comments == 'yes') {
         $cols++;
     }
-
+    echo "<tfoot>";
     if ($sum == "yes") {
         echo '<tr>
    <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>
@@ -202,7 +203,7 @@ $zcol = count($colnames);
      <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>Total Offerings '.number_format($num_deals).'</td>
     </tr>';
     }
-    echo '</tbody>';
+    echo "</tfoot>";
     echo '</table>';
 
     jrm_record_inquiry($like, $date);
