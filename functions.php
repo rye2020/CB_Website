@@ -184,7 +184,7 @@ $zcol = count($colnames);
         }
         notours:
     }
-    echo '</tbody>';
+    echo '</tbody>';  
     $cols = 11;
     if ($ours == 'Y') {
         $cols++;
