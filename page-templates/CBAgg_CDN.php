@@ -1,7 +1,7 @@
 <?php
 /**
-* Template name: CBAgg_CDN
- * Template for displaying just the Header
+ * Template Name: CBAgg_CDN
+ * Template Post Type: page  
  *
  * This is the template that displays the 
  * table of CDN issuance from SQL .
@@ -14,17 +14,18 @@
  * version 1.1 May 1, 2021
  * version 1.2 May 12, 2021
  * version 1.3 February 27, 2022
+ * version 1.4 February 27, 2026
  */
 
-header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
-header("Cache-Control: no-cache");
-header("Pragma: no-cache");
+// header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
+// header("Cache-Control: no-cache");
+// header("Pragma: no-cache");
 //////////////////////////////////////////////////////////////////////////////////////////
 /* 
 * When this .php file is loaded directly by a 'header("Location: ")' statement it comes
 * without any WordPress engine.  Therefore, if the engine is not loaded, it must be loaded.
 */
-require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+//require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 
 if(!session_id()) { session_start(); }
 get_header('tables'); 
@@ -35,13 +36,14 @@ $filepath = __FILE__;
 $file = basename( __FILE__ );
 ?>
 
-<?php include ( get_stylesheet_directory() . '/includes/FilterCDNtest.php');
+<?php include( get_stylesheet_directory() . '/includes/FilterCDNtest.php');
 
 if ($title == "Selected by ") {
 	$title = ""; 
 }
 ?>
-<div id="top" >
+<div id="top-container">
+<div id=top >
 	<div style="padding-right:20px;">
 <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 2/27/2022</p>
 <h1 class="t1USDCB">Canadian Covered Bond Issuance</h1>
@@ -53,7 +55,7 @@ if ($title !== "Select by ") {
 <p class="jmsorter"; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
 
 
-<table class="t1CanadianCBD aggregateCB sortable"; style="margin-left: 0; float:left;">
+<table class="t1CanadianCBD aggregateCB sortable"; style="margin-left: 0; ">
 <!----------THIS IS A PRICING DATE TABLE------------------>
 <!--***************************************************************************************-->
 <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
@@ -84,14 +86,16 @@ if ($title !== "Select by ") {
 
 </div>
 
-<div id="jmWrap">	<!--Start of jmWrap--->
-<div id="jm-filter" style="width:250px; ">
-	<br><br><br><br>
-<?php include ( get_stylesheet_directory() . '/includes/FilterCDNform.php'); ?>
-<?php include ( get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?> 
+<div id="jmWrap">
+<div id="jmfilter" style="width:250px; ">
+    <br><br><br><br>
+
+<?php include(get_stylesheet_directory() . '/includes/FilterCDNform.php');?>
+<?php include( get_stylesheet_directory() . '/includes/RecentPosts_inc.php');?>
+ </div>
 </div>
-</div>   <!--End of jmWrap--->
 </div>
+</div>   
 
 
 <?php echo do_shortcode("[jpshare]"); ?>

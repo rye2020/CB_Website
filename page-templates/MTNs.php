@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: MTNs
+* Template Name: MTNs
+* Template Post Type: page
+* 
  * This is the template that displays the 
  * table of  MTN issuance table from SQL .
  *

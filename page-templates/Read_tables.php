@@ -1,6 +1,7 @@
 <?php
 /**
- * Template name: Read_tablex
+ * Template Name: Read_tablex
+ * Template Post Type: page
  *
  * This is the template that displays any 
  * table of data from SQL.

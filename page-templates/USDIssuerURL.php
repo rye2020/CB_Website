@@ -1,6 +1,8 @@
 <?php
-/*
-* Template name: USDIssuerURL
+/**
+* Template Name: USDIssuerURL
+* Template Post Type: page
+*
  * This is the template that displays the 
  * URL for CB home page for USD Issuers.
  *

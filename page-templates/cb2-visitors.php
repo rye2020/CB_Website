@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: CB2_Visitors
+* Template Name: CB2_Visitors
+* Template Post Type: page
+* 
  * Template for displaying visitor to any page
  *
  * This is the template that displays the 

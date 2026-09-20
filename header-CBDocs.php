@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template header-CBDocs for CB Docs, CDNbySeries, and USC Issuer URLs
+ * Header template header-CBDocs for CB Docs, CDNbySeries, and USD Issuer URLs
  *
  * Displays all of the <head> section and everything up till <div id="main">.
  *
@@ -51,8 +51,7 @@
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="https://www.us-covered-bonds.com/wp-content/themes/twentyeleven/style.css"> 
+<!--<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
@@ -142,6 +141,10 @@
 			<?php endif; ?>
 
 			<nav id="access" role="navigation">
+				<button class="nav-toggle" aria-expanded="false" aria-controls="menu-menu-a">
+					<span class="screen-reader-text">Menu</span>
+					<span class="nav-toggle-bars"></span>
+				</button>
 				<h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
 				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
 				<div class="skip-link"><a class="assistive-text" href="#content"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
@@ -151,11 +154,7 @@
 				<?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 				<hr style="clear: both; background-color:white; height: 2px; margin: 0;" />
-					<?php 
-		//   JRM  load the table menus   /////////////////////////////////////////////////
-                                 //      wp_nav_menu( array( 'theme_location' => 'primary', 'menu' => 'menu C') );
-   				
-                                 ?> 
+
 			</nav><!-- #access -->
 
 	</header><!-- #branding -->

@@ -11,12 +11,13 @@
  * 
  */
 
-header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
+/*header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
 header("Cache-Control: no-cache");
 header("Pragma: no-cache");
-require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php'); */
 
-if ( !session_id() ) session_start();
+if (!session_id())
+    session_start();
 
 $like = "";
 $issuer = '';
@@ -32,150 +33,158 @@ $title = '';
 $page = '';
 date_default_timezone_set("America/New_York");
 
-if ( isset( $_POST['Submitusd'] )) { 
-	$title = "Selected by ";
-	$like = "WHERE Currency LIKE '$'";
+if (isset($_POST['Submitusd'])) {
 
-	$issuer = $_POST['issuerinterest'];
-		 if ($issuer !== "") {   
-            if ($like !== "WHERE ") {
-				$like = $like." AND ";
-				}      
-		$like = $like."Issuer LIKE '%".$issuer."%'";
-		$title = $title."Issuer ";
-		  }
+    $title = "Selected by ";
+    $like = "WHERE Currency LIKE '$'";
+    $file = $_POST['file'];
+    $filepath = $_POST['filepath'];
 
-	$issueyear = $_POST['issueyrselect'];
-		 if ($issueyear !== "") {
-			 if ($like !== "WHERE ") {
-				$like = $like." AND ";
-				}
-		$like = $like."Date LIKE '%".$issueyear."%'";
-		if ($title !== "Selected by ") {
-			$title = $title."and ";
-			}
-		$title = $title."Issue Year ";
-		  }
+    $issuer = $_POST['issuerinterest'];
+    if ($issuer !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
+        $like = $like . "Issuer LIKE '%" . $issuer . "%'";
+        $title = $title . "Issuer ";
+    }
 
-	$maturityyear = $_POST['maturityyrselect'];
-		 if ($maturityyear !== "") {
-			 if ($like !== "WHERE ") {
-				$like = $like." AND ";
-				}
-		$like = $like."Maturity LIKE '%".$maturityyear."%'";
-		if ($title !== "Selected by ") {
-			$title = $title."and ";
-			}
-		$title = $title."Maturity Year ";
-		  }
+    $issueyear = $_POST['issueyrselect'];
+    if ($issueyear !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
+        $like = $like . "Date LIKE '%" . $issueyear . "%'";
+        if ($title !== "Selected by ") {
+            $title = $title . "and ";
+        }
+        $title = $title . "Issue Year ";
+    }
+
+    $maturityyear = $_POST['maturityyrselect'];
+    if ($maturityyear !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
+        $like = $like . "Maturity LIKE '%" . $maturityyear . "%'";
+        if ($title !== "Selected by ") {
+            $title = $title . "and ";
+        }
+        $title = $title . "Maturity Year ";
+    }
 
     $country = $_POST['countryselect'];
-        if ($country !== "") {
-            if ($like !== "WHERE ") {
-            $like = $like." AND ";
-            }
-        if ($country == 'NOT Canada') {
-            $like = $like."Region NOT LIKE '%Canada%'";
+    if ($country !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
         }
-        else {
-            $like = $like."Region LIKE '%".$country."%'";
+        if ($country == 'NOT Canada') {
+            $like = $like . "Region NOT LIKE '%Canada%'";
+        } else {
+            $like = $like . "Region LIKE '%" . $country . "%'";
         }
         if ($title !== "Selected by ") {
-            $title = $title."and ";
-            }
-        $title = $title."Country ";
-            }
+            $title = $title . "and ";
+        }
+        $title = $title . "Country ";
+    }
 
-	$maturity = $_POST['matured'];
-		if ($maturity !== "") {
-			 if ($like !== "WHERE ") { 
-			$like = $like." AND ";
-			}
+    $maturity = $_POST['matured'];
+    if ($maturity !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
 
-        $date = date ('Y-m-d');
+        $date = date('Y-m-d');
         if ($maturity == "Outstanding") {
-            $like = $like."Maturity > '".$date."'";
+            $like = $like . "Maturity > '" . $date . "'";
             if ($title !== "Selected by ") {
-                $title = $title."and ";
+                $title = $title . "and ";
             }
-        $title = $title."Outstanding ";
+            $title = $title . "Outstanding ";
         }
 
         if ($maturity == "Matured") {
-            $like = $like."Maturity < '".$date."'";
+            $like = $like . "Maturity < '" . $date . "'";
             if ($title !== "Selected by ") {
-                $title = $title."and ";
+                $title = $title . "and ";
             }
-            $title = $title."Matured ";
+            $title = $title . "Matured ";
         }
     }
 
     $legacy = $_POST['legacy'];
-        if ($legacy !== "") {
-            if ($like !== "WHERE ") { 
-                $like = $like." AND ";
-                }
-            if ($country !== "" and $country !== 'Canada') {
-                echo "ERROR: cannot select Country not Canada AND Legislative";
-                die;
-            }
-            $like = $like."Region LIKE 'Canada' AND ";
-            $date = "2013-07-16";
-            if ($legacy == "Legislative") {
-                $like = $like."Date >= '".$date."'";
-                    if ($title !== "Selected by ") {
-            $title = $title."and ";
-            }
-            $title = $title."Legislative ";
-            }
-            if ($legacy == "Pre-Legislative") {
-                $like = $like."Date < '".$date."'";
-                if ($title !== "Selected by ") {
-                    $title = $title."and ";
-                }
-                $title = $title."Pre-Legislative ";
-            }
-            }
-            
-
-    $tenor = $_POST ['tenorselect'];
-        if ($tenor !== "") {
-            if ($like !== "WHERE ") {
-                $like = $like." AND ";
-            }
-        $like = $like."Tenor LIKE '%".$tenor."%'";
+    if ($legacy !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
+        if ($country !== "" and $country !== 'Canada') {
+            $_SESSION['jrm_form_error'] =
+                'Cannot select Country other than Canada AND Legislative';
+            return;
+        }
+        $like = $like . "Region LIKE 'Canada' AND ";
+        $date = "2013-07-16";
+        if ($legacy == "Legislative") {
+            $like = $like . "Date >= '" . $date . "'";
             if ($title !== "Selected by ") {
-            $title = $title."and ";
+                $title = $title . "and ";
             }
-        $title = $title."Tenor ";
-            }
-
-    $type = $_POST ['typeselect'];
-        if ($type !== "") {
-            if ($like !== "WHERE ") {
-                $like = $like." AND ";
-            }
-        $like = $like."Type LIKE '%".$type."%'";
+            $title = $title . "Legislative ";
+        }
+        if ($legacy == "Pre-Legislative") {
+            $like = $like . "Date < '" . $date . "'";
             if ($title !== "Selected by ") {
-            $title = $title."and ";
+                $title = $title . "and ";
             }
-        $title = $title."Type ";
-            }
+            $title = $title . "Pre-Legislative ";
+        }
+    }
 
-          if ($like == "WHERE ") {
-              $like = '';
-          }
-  
+
+    $tenor = $_POST['tenorselect'];
+    if ($tenor !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
+        $like = $like . "Tenor LIKE '%" . $tenor . "%'";
+        if ($title !== "Selected by ") {
+            $title = $title . "and ";
+        }
+        $title = $title . "Tenor ";
+    }
+
+    $type = $_POST['typeselect'];
+    if ($type !== "") {
+        if ($like !== "WHERE ") {
+            $like = $like . " AND ";
+        }
+        $like = $like . "Type LIKE '%" . $type . "%'";
+        if ($title !== "Selected by ") {
+            $title = $title . "and ";
+        }
+        $title = $title . "Type ";
+    }
+
+    if ($like == "WHERE ") {
+        $like = '';
+    }
+
     if ($title == "Selected by ") {
-		$title = "";
-	}
-	$_SESSION["jrm_form_elements"] = array();
-	$_SESSION["jrm_form_elements"]['like'] = $like;
-	$_SESSION["jrm_form_elements"]['title'] = $title;
+        $title = "";
+    }
+    $_POST = array();
+    $_SESSION["jrm_form_elements"] = array();
+    $_SESSION["jrm_form_elements"]['like'] = $like;
+    $_SESSION["jrm_form_elements"]['title'] = $title;
+    $_SESSION["jrm_form_elements"]['currency'] = $currency;
+    $_SESSION["jrm_form_elements"]['country'] = $country;
+    $_SESSION["jrm_form_elements"]['issueyear'] = $issueyear;
+    $_SESSION["jrm_form_elements"]['page'] = $file;
 
-	header ('Location: /wp-content/themes/twentyeleven-child/page-templates/CBAgg_USD.php/');
-	header ('Connections: close');
-	exit;
+    // header ('Location: /wp-content/themes/twentyeleven-child/page-templates/CBAgg_USD.php/');
+    // header ('Connections: close');
+    // exit;
+    return;
 }
-
 ?>

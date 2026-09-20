@@ -1,6 +1,7 @@
 <?php
 /**
 * Template name: read_comments
+* Template Post Type: page
  *
  * This is the template that displays any 
  * CB entry that has a comment.

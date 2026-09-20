@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: MISC
+* Template Name: MISC
+* Template Post Type: page
+* 
  * This is the template that displays the 
  * table of  MISC Data table from SQL .
  *

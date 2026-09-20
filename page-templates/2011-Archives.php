@@ -1,8 +1,9 @@
 <?php
 /**
- * Template for displaying Archive pages
-Template Name:2011-Archives
+ * Template Name: 2011-Archives
+ * Template Post Type: page
  *
+ * Template for displaying Archive pages
  * Used to display archive-type pages if nothing more specific matches a query.
  * For example, puts together date-based pages if no date.php file exists.
  *

@@ -1,6 +1,7 @@
 <?php
 /*
-Template Name: Archives
+* Template Name: Archives
+* Template Post Type: page
 */
 get_header(); ?>
 <style scoped>

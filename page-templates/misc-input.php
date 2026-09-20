@@ -1,6 +1,8 @@
 <?php
 /**
- * Template name: MISC_Input
+ * Template Name: MISC_Input
+ * Template Post Type: page
+ * 
  * Template for updating the database table for MISC Data
  *
  * This is the template that updates the 

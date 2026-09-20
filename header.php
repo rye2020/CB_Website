@@ -1,15 +1,14 @@
 <?php
 /**
- * Header template for New Front page
+ * Default Header template
  *
  * Displays all of the <head> section and everything up till <div id="main">.
- *
- * JRM Updated to add specific menus to certain pages (2/26/2015)
- *
+ * *
  * @Author JMarlatt
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
- * @since Twenty Eleven_Child 1.0
+ * @subpackage Twenty_Twenty_One_Child
+ * @since Twenty Twenty_One_Child 1.0
+ * @version v.1.0 30 July 2026
  */
 ?><!DOCTYPE html>
 <!--[if IE 6]>
@@ -26,7 +25,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width" />
 <meta name="msvalidate.01" content="957CB525435BA5E49FCE1E1493C6737E" />
 <title><?php
 	// Print the <title> tag based on what is being viewed.
@@ -48,35 +47,21 @@
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
-<link rel="stylesheet" type="text/css" media="all" href="https://www.us-covered-bonds.com/wp-content/themes/twentyeleven/style.css">
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-<![endif]-->
+<meta http-equiv="X-Frame-Options" content="sameorigin"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <!--JM 3/20-->
+<!--JRM - include jQuery code  -->	
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <?php
-	/*
-	 * We add some JavaScript to pages with the comment form
-	 * to support sites with threaded comments (when in use).
-	 */
-	if ( is_singular() && get_option( 'thread_comments' ) )
-		wp_enqueue_script( 'comment-reply' );
-
-	/*
+	 /* 
 	 * Always have wp_head() just before the closing </head>
 	 * tag of your theme, or you will break many plugins, which
 	 * generally use this hook to add elements to <head> such
 	 * as styles, scripts, and meta tags.
 	 */
 	wp_head();
-?>
-<!--JRM - include sort table code -->
-<script src="/wp-includes/js/sorttable.js" type="text/javascript"></script> 
-<meta http-equiv="X-Frame-Options" content="sameorigin"> 
-<!--JRM - include jQuery code  -->	
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+	?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -84,77 +69,20 @@
 	<header id="branding" role="banner">
 			<hgroup>
 				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-                              <!-- <h2><scan style="color: blue; font-family: 'Georgia'; font-variant: small-caps; font-size: 80%; font-weight: bold; margin: 0 0 0.625% 0; padding:0; border:0; line-height:70%">Follow us on <a href="www.twitter.com/uscoveredbonds" target="_blank">@UScoveredbonds</a></scan></h2> -->
+                <!--<h2><scan style="color: blue; font-family: 'Georgia'; font-variant: small-caps; font-size: 80%; font-weight: bold; margin: 0 0 0.625% 0; padding:0; border:0; line-height:70%">Follow us on <a href="www.twitter.com/uscoveredbonds" target="_blank">@UScoveredbonds</a></scan></h2> -->
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
-
-			<?php
-				// Check to see if the header image has been removed
-				$header_image = get_header_image();
-				if ( $header_image ) :
-					// Compatibility with versions of WordPress prior to 3.4.
-					if ( function_exists( 'get_custom_header' ) ) {
-						/*
-						 * We need to figure out what the minimum width should be for our featured image.
-						 * This result would be the suggested width if the theme were to implement flexible widths.
-						 */
-						$header_image_width = get_theme_support( 'custom-header', 'width' );
-					} else {
-						$header_image_width = HEADER_IMAGE_WIDTH;
-					}
-					?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<?php
-					/*
-					 * The header image.
-					 * Check if this is a post or page, if it has a thumbnail, and if it's a big one
-					 */
-					if ( is_singular() && has_post_thumbnail( $post->ID ) &&
-							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
-							$image[1] >= $header_image_width ) :
-						// Houston, we have a new header image!
-						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-					else :
-						// Compatibility with versions of WordPress prior to 3.4.
-						if ( function_exists( 'get_custom_header' ) ) {
-							$header_image_width  = get_custom_header()->width;
-							$header_image_height = get_custom_header()->height;
-						} else {
-							$header_image_width  = HEADER_IMAGE_WIDTH;
-							$header_image_height = HEADER_IMAGE_HEIGHT;
-						}
-						?>
-					<img src="<?php header_image(); ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
-				<?php endif; // end check for featured image or standard header ?>
-			</a>
-			<?php endif; // end check for removed header image ?>
-
-			<?php
-				// Has the text been hidden?
-				if ( 'blank' == get_header_textcolor() ) :
-			?>
-				<div class="only-search<?php if ( $header_image ) : ?> with-image<?php endif; ?>">
+			
 				<?php get_search_form(); ?>
-				</div>
-			<?php
-				else :
-			?>
-				<?php get_search_form(); ?>
-			<?php endif; ?>
-
 			<nav id="access" role="navigation">
-				<!--<h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
-				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#content"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
-				<?php if ( ! is_singular() ) : ?>
-					<div class="skip-link"><a class="assistive-text" href="#secondary"><?php _e( 'Skip to secondary content', 'twentyeleven' ); ?></a></div>
-				<?php endif; ?>-->
-				<?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
+				<button class="nav-toggle" aria-expanded="false" aria-controls="menu-menu-a">
+					<span class="screen-reader-text">Menu</span>
+					<span class="nav-toggle-bars"></span>
+				</button>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-                    
 			</nav><!-- #access -->
 
-	</header><!-- #branding -->
+	</header><!-- #branding JM -->
 
 
 	<div id="main">

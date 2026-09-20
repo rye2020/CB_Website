@@ -1,23 +1,23 @@
 <?php
 /**
- * CBAgg-Form.php
+ * CDN-Form.php
  * Module for managing form input and 
  * developing the query LIKE field.
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
+ * @subpackage Twenty_Twenty_One_Child
  * @ author J.R.Marlatt
  * version 1.1 May 1.2021 
- * 	  
+ * version 1.2 Jan 14, 2026	  
  */
 
-header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
+/*header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
 header("Cache-Control: no-cache");
 header("Pragma: no-cache");
-require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php'); 
 
 if(!session_id()) 
-    session_start(); 
+    session_start(); */
 
 $like = "";
 $issuer = '';
@@ -134,8 +134,9 @@ if ( isset( $_POST['SubmitCDN'] )) {
 				$like = $like." AND ";
 				}
 			if ($country !== "" and $country !== 'Canada') {
-				echo "ERROR: cannot select Country other than Canada AND Legislative";
-				die;
+				$_SESSION['jrm_form_error'] =
+    				'Cannot select Country other than Canada AND Legislative';
+			return;
 			}
 			$like = $like."Region LIKE 'Canada' AND ";
 			$date = "2013-07-16";
@@ -193,9 +194,15 @@ if ( isset( $_POST['SubmitCDN'] )) {
 	$_SESSION["jrm_form_elements"]['country'] = $country;
 
 	
-	// header ('Location: /wp-content/themes/twentyeleven-child/page-templates/CBAggCDN.php/');
+	// header ('Location: /wp-content/themes/twentyeleven-child/page-templates/CBAgg_CDN.php/');
 	
 	// header ('Connections: close');
+
+	// Use relative addressing for staging
+	//wp_redirect(
+	//	get_stylesheet_directory_uri() . '/page-templates/CBAgg_CDN.php'
+	//);
+	//exit;
 	return;
 }
 ?>

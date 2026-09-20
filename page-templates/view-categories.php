@@ -1,6 +1,7 @@
 <?php
-/*
- * Template name: View-Categories
+/**
+ * Template Name: View-Categories
+ * Template Post Type: page
  *
  * Display posts for categories
  *

@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: CBAgg_OurDeals
+* Template Name: CBAgg_OurDeals
+* Template Post Type: page
+* 
  * This is the template that displays the 
  * table of aggregate CB issuance from SQL
  * That we have worked on.

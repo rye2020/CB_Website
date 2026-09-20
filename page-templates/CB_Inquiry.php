@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: CB_Inquiry
+* Template Name: CB_Inquiry
+* Template Post Type: page
+* 
  * Template for displaying just the Header
  *
  * This is the template that displays the 

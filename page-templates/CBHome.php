@@ -1,6 +1,8 @@
 <?php
 /**
- * Template name: CBHome
+ * Template Name: CBHome
+ * Template Post Type: page
+ * 
  * This is the template that displays the 
  * home page for the site.
  *
@@ -12,13 +14,13 @@
  * 
  */
 
-get_header();
+get_header("home");
 ?>
 
 <!-- wp:core/text --><!-- To defeat Gutenberg and prevent changes to page -->
 
 <!-------------------------------------HOME PAGE BOX----------------------------------------------------------------->
-<div class="home-box" style="maxwidth: 1600px;">
+<div class="home-box">
 	<hr class="Fhspace" style="clear:both; background-color:white; height:1px;">
 	<div id="target-header" style="background-color: #000066; width: auto;">
 		<h1 style="color: white; margin: 0; font-size: 150%; text-align: center;"><strong>Covered Bonds in the United
@@ -27,7 +29,7 @@ get_header();
 	<hr class="Fhspace" style="clear:both; background-color:white; height:3px;">
 
 <!--------------------------------------HEADER PHOTOS---------------------------------------------------------------->
-	<div class="home-photo" height:370px;>
+	<div class="home-photo" display:block height:370px;>
 		<a href="CBAggregate/">
 			<img src="/wp-content/uploads/2020/01/Onepixel_878730-scaled.jpg"  title="The World War II Memorial, Washington D.C." />
 		</a>
@@ -37,8 +39,8 @@ get_header();
 <!------------------------------------------START------------------------------------------------------------------->
 	<hr class="Fhspace" style="clear:both; background-color:blue; ">
 	<section class="home-container" style="width: auto;"> <!--container for content and twitter -->
-		<div id="idF1container" class="F1container" style="display:flex; justify-content:space-between; width: 100%;"> <!--three column container for content-->
-			<div class="homeCol" style="width: 25%; border-right: 1px solid black; padding: 0 3px 0 3px; ">
+		<div class="F1container" style="display:flex; justify-content:space-between; width: 75%;"> <!--three column container for content-->
+			<div style="width: 33%; border-right: 1px solid black; padding: 0 3px 0 3px; ">
 				<div class="Fbox" width=100%>      
 					<!---------------------------------------Page Date--------------------------------------------------------------->
 					<p
@@ -56,7 +58,7 @@ get_header();
 				<hr class="Fhspace" style="clear: both; margin-top: 3px;">
 
 				<div>
-					<br /><strong>See all the data</strong> on U.S.$ and Canadian bank covered bond activity since 2007 
+					<br /><strong>See all the data</strong> on U.S.$ and Canadian bank covered bond activity since 2007
 					at
 					<a href="CBaggregate/">Data Tables</a>.
 				</div>
@@ -66,13 +68,13 @@ get_header();
 				<!---------------------------------------INFOGRAPHIC---------------------------------------------------------------->
 				<div style="float:left; width:74%;">
 					<br /><strong>See Mayer Brown's <a
-							href="/wp-content/uploads/2026/02/At-A-Glance-Covered-Bonds-February-2026.pdf" target="blank"
+							href="/wp-content/uploads/2023/09/Covered-Bonds-2023-Inforgraphic.jpg.pdf" target="blank"
 							rel="noopener noreferrer"><u>Covered Bonds - At A Glance</u></a> for U.S.$ covered bond
-						statistics for the period 2018 through 2025.</strong>
+						statistics for the period 2010 through 2022.</strong>
 				</div>
 				<div style="float:right; width:26%;">
-					<a href="/wp-content/uploads/2026/02/At-A-Glance-Covered-Bonds-February-2026.pdf" target="blank" rel="noopener noreferrer">
-						<img class="j1infog" src="/wp-content/uploads/2026/02/At-a-Glance-Covered-Bonds-February-2026.jpg"
+					<a href="/wp-content/uploads/2023/09/Covered-Bonds-V6.pdf" target="blank" rel="noopener noreferrer">
+						<img class="j1infog" src="/wp-content/uploads/2022/06/Covered-bonds_2022_V2-1-scaled.jpg"
 							margin-top="5" align="right" />
 					</a>
 				</div>
@@ -215,7 +217,7 @@ get_header();
 				<hr class="Fhspace" style="clear: both; margin-top: 3px;">
 			</div>
 
-			<div class="homeCol" style="width:25%; border-right: 1px solid black; padding: 0 3px 0 3px; ">
+			<div style="width:33%; border-right: 1px solid black; padding: 0 3px 0 3px; ">
 				<hr class="Fhspace" style="clear: both; margin-top: 10px;">
 
 
@@ -274,14 +276,14 @@ get_header();
 					</div>
 
 					
-					<div class="homeCol" style="width:25%; border-right: 1px solid black; padding: 0 3px 0 3px; ">
+					<div style="width:33%; border-right: 1px solid black; padding: 0 3px 0 3px; ">
 
 					<hr class="Fhspace" style="clear: both; margin-top: 10px;" />
 <!------------------------REGULATORY DEVELOPMENTS-------------------------------------->
 					<p style="color: #3366ff; text-decoration: underline; background-color: #b5c7e2;"><strong>Regulatory
 							Developments</strong></p>
 						
-					    <strong>ABS Concept Release.</strong> On September 26, 2025, the SEC published a concept release on residential mortgage-backed securities disclosures. See <a href="https://www.federalregister.gov/documents/2025/10/01/2025-19152/concept-release-on-residential-mortgage-backed-securities-disclosures-and-enhancements-to">ABS Release.</a> Of interest as well is the <a href="https://www.sec.gov/newsroom/speeches-statements/atkins-2025-concept-release-rmbs-abs">statement</a> of Chairman Paul Atkins on the release. In his remarks, Chairman Atkins said "[t]he concept release is the first step in the Commission’s efforts to revitalize the public market for RMBS and modernize the agency’s regulations of ABS." It may also be the first and necessary step in addressing the conservatorship of the GSEs. <br><br>A possible parallel approach might be to enable U.S. issuers to issue covered bonds. Why not enable another working alternative to give us the best chance of supporting the housing finance market? See <a href="https://www.us-covered-bonds.com/2014/09/11/use-cbs-to-restart-the-pls-market/">Use CBs to Restart the PLS Market.</a>
+					    <strong>ABS Concept Release.</strong> On September 26, 2025, the SEC published a concept release on residential mortgage-backed securities disclosures. See <a href="https://www.federalregister.gov/documents/2025/10/01/2025-19152/concept-release-on-residential-mortgage-backed-securities-disclosures-and-enhancements-to">ABS Release.</a> Of interest as well is the <a href="https://www.sec.gov/newsroom/speeches-statements/atkins-2025-concept-release-rmbs-abs">statement</a> of Chairman Paul Atkins on the release. In his remarks, Chairman Atkins said "[t]he concept release is the first step in the Commission’s efforts to revitalize the public market for RMBS and modernize the agency’s regulations of ABS." It may also be the first and necessary step in addressing the conservatorship of the GSEs. <br><br>A possible parallel approach might be to enable U.S. issuers to issue covered bonds. Why not enable another working alternative to give us the best chance of supporting the housing finance market? See <a href:"https://www.us-covered-bonds.com/2014/09/11/use-cbs-to-restart-the-pls-market/">Use CBs to Restart the PLS Market.</a>
 						<hr>
 						
 						<strong>Basel III Endgame</strong> - <a title="Basel Endgame"
@@ -363,9 +365,9 @@ get_header();
 					</ul>
 					<hr class="Fhspace" style="clear: both; margin-top: 3px;">
 			</div>
-		<!---</div>	--->
+		</div>	
 
-        <div class="twitter-container homeCol"
+        <div class="twitter-container"
                 style="padding: 3px; width:25%;">
             <hr class="Fhspace" style="clear: both; margin-top: 10px;" />
 <!------------------------TWEETS FROM X-------------------------------------->
@@ -373,53 +375,22 @@ get_header();
 
             <?php echo do_shortcode('[custom-twitter-feeds feed=1]'); ?>
 					<br>
+		</div>
 
 <!------XDeveloper code---------------------------->
-            <a class="twitter-timeline" 
+		<div>            
+<a class="twitter-timeline" 
                 href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw">
                 Tweets by XDevelopers
             </a> 
 
 
 
-			</div>
-       </div>
+		</div>
 
 
 	
 	</section>
-
-    <!---Responsive Page---------------------------->
-	<script>
-		// Detect mobile device and change to single column
-	document.addEventListener('DOMContentLoaded', jmMobile);
-   screen.orientation.addEventListener('change', jmMobile); 
-		
-  function jmMobile() {
-    setTimeout(() => {
-	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    var myDiv = document.getElementById('idF1container');
-	let elements = document.getElementsByClassName("homeCol");
-    const jm2Width = window.innerWidth;
-    
-    if (isMobile && jm2Width < 600) {
-		myDiv.style.display = "block";    // Change to block display
-		// Loop through and change width to 100%
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.width = "100%";
-        }
-	} else {
-		myDiv.style.display = "flex";     // Stamdard flex dosplay
-		// Loop through and change width to 25%
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.width = "25%";
-        }
-	}
-}, 200);
-  }
-	</script>
- 
-	<!---End Responsive Page---------------------------->
 
 <!-- make page full screen -->
 <script>

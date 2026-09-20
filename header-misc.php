@@ -38,8 +38,7 @@
 	echo "Capital Markets Offerings";  ///////////////JRM/////////////////
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php //bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="https://www.us-covered-bonds.com/wp-content/themes/twentyeleven/style.css">
+,!--- <link rel="stylesheet" type="text/css" media="all" href="<?php //bloginfo( 'stylesheet_url' ); ?>" /> --->
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
@@ -129,6 +128,10 @@
 			<?php endif; ?>
 
 			<nav id="access" role="navigation">
+				<button class="nav-toggle" aria-expanded="false" aria-controls="menu-menu-a">
+					<span class="screen-reader-text">Menu</span>
+					<span class="nav-toggle-bars"></span>
+				</button>
 				<h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
 				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
 				<div class="skip-link"><a class="assistive-text" href="#content"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>

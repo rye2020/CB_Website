@@ -1,11 +1,10 @@
 <?php
 /*
  * @package WordPress
- * @subpackage TwentyTwentyOne-Child
+ * @subpackage Twenty_Eleven-Child
  * @author Jerry Marlatt
  * Version 2.0 Jan 29,2020
  * Version 2.1 Mar 29, 2021
- * Version 3.0 Sep 19, 2026
  */
 /***Twenty Twenty-One-Child functions and definitions
  *
@@ -109,17 +108,17 @@ function jrm_get_table($table, $like, $sum, $col, $index = null, $orderby = null
         return;
     }
     $colnames = [];
-    $query = $wpdb->prepare(
-    'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
-     WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s
-     ORDER BY ORDINAL_POSITION',
-    $table
-);
+    $query = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME="' . $table . '"';
+    $colnames = $wpdb->get_results($query, ARRAY_N);
+    $zcol = count($colnames);
+    /*****************************************/
+/*    echo "<pre>";
+    var_dump($colnames);
+    echo "</pre>";  */
+    /*****************************************/
+    
 
-$colnames = $wpdb->get_results("SHOW COLUMNS FROM `$table`", ARRAY_N);
-$zcol = count($colnames);
-
- // Test for table having currency sign 
+    // Test for table having currency sign 
     $currency = 'no';
     if ($colnames[5][0] == 'Currency') {
         $currency = 'yes';
@@ -130,12 +129,12 @@ $zcol = count($colnames);
     } elseif ($orderby == '') {
         $orderby = ' ORDER BY Date DESC';
     } else {
-        $orderby = ' ORDER BY '.$orderby;
+        $orderby = ' ORDER BY ' . $orderby;
     }
     if ($like != '') {
-        $like = " ".$like; //add buffer space
+        $like = " " . $like; //add buffer space
     }
-    $query = "SELECT * FROM ".$table.$like.$orderby;
+    $query = "SELECT * FROM " . $table . $like . $orderby;
     $results = $wpdb->get_results($query, ARRAY_N);
     $z = count($results);
     $num_deals = 0;
@@ -173,14 +172,21 @@ $zcol = count($colnames);
                 if ($table == "CBAggregate" && $colnames[$x][0] == "Ours" && $ours !== "Y") {
                     goto skipcomments;
                 }
-                echo '<td data-label="'.$colnames[$x][0] . '">'.$element.'</td>';
-             skipcomments:
+                echo '<td data-label="' . $colnames[$x][0] . '">' . $element . '</td>';
+                /*************************************************/
+       /*        if ($y = 0) {
+                    echo "<pre>";
+                    echo $element;
+                    echo "</pre>";
+                }  */
+                /**************************************************/
+                skipcomments:
             }
         }
         echo '</tr>';
         $num_deals++;
         if ($sum == "yes") {
-            $total = $total+$output[$col];
+            $total = $total + $output[$col];
         }
         notours:
     }
@@ -194,12 +200,12 @@ $zcol = count($colnames);
 
     if ($sum == "yes") {
         echo '<tr>
-   <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>
-    Total Issuance '.($currencysign).''.number_format($total).' million   //  Total Offerings '. number_format($num_deals).'</td>
+   <td colspan="' . $cols . '" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>
+    Total Issuance ' . ($currencysign) . '' . number_format($total) . ' million   //  Total Offerings ' . number_format($num_deals) . '</td>
     </tr>';
     } else {
         echo '<tr>
-     <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>Total Offerings '.number_format($num_deals).'</td>
+     <td colspan="' . $cols . '" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>Total Offerings ' . number_format($num_deals) . '</td>
     </tr>';
     }
     echo '</tbody>';

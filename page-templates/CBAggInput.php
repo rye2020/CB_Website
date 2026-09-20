@@ -1,6 +1,8 @@
 <?php
 /**
- * Template name: CBAgg_Input
+ * Template Name: CBAgg_Input
+ * Template Post Type: page
+ * 
  * Template for updating the database tables for CBs
  *
  * This is the template that updates the 
@@ -126,12 +128,12 @@ for ($y=0; $y < $z; $y++) {
 Pricing Date: <input type="text" name="pricing" style="position:absolute; left:300px;" placeholder="yyyy-mm-dd" required><br /><br />
 Issuer: <select name='issuer' style="position:absolute; left:300px; width: 190px;" required><br /><br />
 <option value='' label="Select Issuer Name"> </option>
-	<?php include ( get_stylesheet_directory() . '/includes/Global_Issuers.php'); ?>
+	<?php include(get_stylesheet_directory() . '/includes/Global_Issuers.php'); ?>
 	</select>
 	<br /><br />
 Region: <select name='region' style="position:absolute; left:300px; width:190px;"><br><br>
 <option value='' label="Select Country"> </option>
-	<?php include ( get_stylesheet_directory() . '/includes/Global_Countries.php'); ?>		
+<?php include(get_stylesheet_directory() . '/includes/Global_Countries.php'); ?>
 	</select>
 	<br /><br />
 Series: <input type="text" name="series" style="position:absolute; left:300px;" placeholder="CBLxx"><br><br>

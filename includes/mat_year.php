@@ -46,4 +46,3 @@ echo "</select></div>";
 <option value='Reg S'>Reg S</option>
 <option value='BoC'>Bank of Canada</option>					 
 </select></div>
-

@@ -1,0 +1,21 @@
+/*************************************************
+*  Formatting for Block Editor posts and pages.  *
+**************************************************
+*************************************************/
+.entry-title {display: none;}
+.entry-content{
+     width: 750px;
+     max-width: 750px;
+}
+.entry-content p {
+     font-family: georgia;
+     text-align: justify;
+}
+.entry-content .wp-block-image {
+     margin:0 auto 1em auto;
+}
+.entry-content .wp-block-image img {
+     margin: 0  auto;
+     max-width: 750px;
+     display: block;
+}

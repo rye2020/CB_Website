@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template for tables of CB data
+ * Header template for Home page and certain others
  *
  * Displays all of the <head> section and everything up till <div id="main">.
  *
@@ -9,7 +9,7 @@
  * @package WordPress
  * @subpackage Twenty_Twenty_One_Child
  * @since Twenty Twenty_One_Child 1.0
- * @version 1.0 Jan 16, 2026
+ * @version 1.0 15 Jan 2026
  */
 ?><!DOCTYPE html>
 <!--[if IE 6]>
@@ -26,33 +26,32 @@
 <!--<![endif]-->
 
 <head>
+
 	<?php
-	$GLOBALS['header_tables_loaded'] = true;
+	$GLOBALS['header_home_loaded'] = true;
 	?>
-  	<meta charset="<?php bloginfo('charset'); ?>" />
+	<meta charset="<?php bloginfo('charset'); ?>" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="msvalidate.01" content="957CB525435BA5E49FCE1E1493C6737E" />
-	<title>
-		<?php
-		// Print the <title> tag based on what is being viewed.
-		global $page, $paged, $menu;
+	<title><?php
+	// Print the <title> tag based on what is being viewed.
+	global $page, $paged, $menu;
 
-		wp_title('|', true, 'right');
+	wp_title('|', true, 'right');
 
-		// Add the blog name.
-		bloginfo('name');
+	// Add the blog name.
+	bloginfo('name');
 
-		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo('description', 'display');
-		if ($site_description && (is_home() || is_front_page()))
-			echo " | $site_description";
+	// Add the blog description for the home/front page.
+	$site_description = get_bloginfo('description', 'display');
+	if ($site_description && (is_home() || is_front_page()))
+		echo " | $site_description";
 
-		// Add a page number if necessary:
-		if (($paged >= 2 || $page >= 2) && !is_404())
-			echo ' | ' . sprintf(__('Page %s', 'twentyeleven'), max($paged, $page));
+	// Add a page number if necessary:
+	if (($paged >= 2 || $page >= 2) && !is_404())
+		echo ' | ' . sprintf(__('Page %s', 'twentyeleven'), max($paged, $page));
 
-		?>
-	</title>
+	?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<!--[if lt IE 9]>
@@ -88,6 +87,8 @@
 					<span class="nav-toggle-bars"></span>
 				</button>
 				<?php wp_nav_menu(array('theme_location' => 'primary')); ?>
+				<hr style="clear: both; background-color:white; height: 2px; margin: 0;" />
+
 			</nav><!-- #access -->
 
 		</header><!-- #branding -->

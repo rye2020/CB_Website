@@ -1,5 +1,7 @@
 <style scoped>
-div#secondary {margin-right:0;}
+div#secondary {
+	margin-right:0;
+	}
 </style>
 <aside style="font-size:small;">
 <p style="margin:0; text-decoration: underline;"><strong>Data Filters:</strong></p>
@@ -12,12 +14,13 @@ div#secondary {margin-right:0;}
 	}
 	.data-filter-container {
 		display: grid;
-		gap: .2em;
+		gap: .25em;
 		grid-rows: 7px;
 	}
 	</style>
 	
-<form name='AGGinterest' action='<?php echo esc_url(admin_url('admin-post.php')); ?>' method='POST'>
+
+<form name='AGGinterest' action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method='POST'>
 <div class="data-filter-container">
 <div class="filter_select"><label for='issuerselect'>Issuer</label>
 <select name='issuerselect' style="width:60%;">
@@ -32,10 +35,8 @@ div#secondary {margin-right:0;}
 </select></div>
 <?php	include ("mat_year.php"); ?>
 
-
-<input type='hidden' name="action" value="agg_interest_form">
+<input type="hidden" name="action" value="agg_interest_form">
 <input type='hidden' name='file' value="<?php echo $file; ?>" >
 <input type='hidden' name='filepath' value='<?php echo $filepath; ?>' >
-<div class="filter_select"><p><input type='submit' name='SubmitAGG' value='Submit' /></div>
-</div>
+<p><input type='submit' name='SubmitAGG' value='Submit' />
 </form></p>

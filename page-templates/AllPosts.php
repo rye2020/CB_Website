@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: AllPosts
+ * Template Post Type: page
  *
  * Displays all posts for the site.
  *

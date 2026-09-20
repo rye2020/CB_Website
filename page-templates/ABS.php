@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: ABS
+* Template Name: ABS
+* Template Post Type: page
+* 
  * This is the template that displays the 
  * table of  ABSData table from SQL .
  *

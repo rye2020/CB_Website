@@ -1,6 +1,8 @@
 <?php
 /**
- * Template name: ABS_Input
+ * Template Name: ABS_Input
+ * Template Post Type: page
+ * 
  * Template for updating the database table for ABS Data
  *
  * This is the template that updates the 

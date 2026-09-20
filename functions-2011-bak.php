@@ -1,13 +1,9 @@
 <?php
 /*
- * @package WordPress
- * @subpackage TwentyTwentyOne-Child
- * @author Jerry Marlatt
- * Version 2.0 Jan 29,2020
- * Version 2.1 Mar 29, 2021
- * Version 3.0 Sep 19, 2026
- */
-/***Twenty Twenty-One-Child functions and definitions
+ *
+ *
+ * 
+ * Twenty Eleven-Child functions and definitions
  *
  * Sets up the theme and provides some helper functions. Some helper functions
  * are used in the theme as custom template tags. Others are attached to action and
@@ -41,6 +37,7 @@
  * Functions contained in this file are:
  *
  *    1.  jrm_get_pagename()
+ *    2.  add_my_post_tyype_to_query()
  *    3.  jrm_get_table()
  *    4.  jrm_record_inquiry()
  *    5.  get_the_user_ip()
@@ -49,6 +46,13 @@
  *    8.  function start_session()
  *    9.  function end_session()
  *-------------------------------------------------------------------------------------------------
+ * @package WordPress
+ * @subpackage Twenty_Eleven-Child
+ * @author Jerry Marlatt
+ * Version 2.0 Jan 29,2020
+ * Version 2.1 Mar 29, 2021
+ */
+/***
  *=======================================================================================
  ****************************************************************************************
  *=======================================================================================
@@ -70,6 +74,26 @@ function jrm_get_pagename()
     return $jrm_pagename;
 }
 
+
+/****
+ *=======================================================================================
+ ****************************************************************************************
+ *=======================================================================================
+ *   function add_my_post_types_to_query
+ *
+ * 
+ *---------------------------------------------------------------------------------------
+ */
+// Show posts of 'post', 'page' and 'movie' post types on home page
+add_action('pre_get_posts', 'add_my_post_types_to_query');
+
+function add_my_post_types_to_query($query)
+{
+    if (is_home() && $query->is_main_query())
+        $query->set('post_type', array('post', '**', 'movie'));  //add PAGE or not
+    return $query;
+}
+
 /***
  *=======================================================================================
  ****************************************************************************************
@@ -82,10 +106,10 @@ function jrm_get_pagename()
  *  We will also record the identity of the requestor in the CB_Inquiry table.
  *
  *  Parameters are:
- *       $table = table_name
- *       $like = ""|[WHERE 'column' LIKE %canada%]
- *       $sum = yes|no for total issuance row
- *       $col = column # for summing up total issuance
+ *           $table = table_name
+ *           $like = ""|[WHERE 'column' LIKE %canada%]
+ *           $sum = yes|no for total issuance row
+ *           $col = column # for summing up total issuance
  *       $index = yes|NO for including the first column with the record number
  *       $orderby = ''[Date]|NONE|[string]  defaults to Date if empty
  *       $skip = column # | column to be ignored and not returned
@@ -109,17 +133,11 @@ function jrm_get_table($table, $like, $sum, $col, $index = null, $orderby = null
         return;
     }
     $colnames = [];
-    $query = $wpdb->prepare(
-    'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
-     WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s
-     ORDER BY ORDINAL_POSITION',
-    $table
-);
+    $query = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME="' . $table . '"';
+    $colnames = $wpdb->get_results($query, ARRAY_N);
+    $zcol = count($colnames);
 
-$colnames = $wpdb->get_results("SHOW COLUMNS FROM `$table`", ARRAY_N);
-$zcol = count($colnames);
-
- // Test for table having currency sign 
+    // Test for table having currency sign 
     $currency = 'no';
     if ($colnames[5][0] == 'Currency') {
         $currency = 'yes';
@@ -130,12 +148,12 @@ $zcol = count($colnames);
     } elseif ($orderby == '') {
         $orderby = ' ORDER BY Date DESC';
     } else {
-        $orderby = ' ORDER BY '.$orderby;
+        $orderby = ' ORDER BY ' . $orderby;
     }
     if ($like != '') {
-        $like = " ".$like; //add buffer space
+        $like = " " . $like; //add buffer space
     }
-    $query = "SELECT * FROM ".$table.$like.$orderby;
+    $query = "SELECT * FROM " . $table . $like . $orderby;
     $results = $wpdb->get_results($query, ARRAY_N);
     $z = count($results);
     $num_deals = 0;
@@ -173,14 +191,14 @@ $zcol = count($colnames);
                 if ($table == "CBAggregate" && $colnames[$x][0] == "Ours" && $ours !== "Y") {
                     goto skipcomments;
                 }
-                echo '<td data-label="'.$colnames[$x][0] . '">'.$element.'</td>';
-             skipcomments:
+                echo '<td data-label="' . $colnames[$x][0] . '">' . $element . '</td>';
+                skipcomments:
             }
         }
         echo '</tr>';
         $num_deals++;
         if ($sum == "yes") {
-            $total = $total+$output[$col];
+            $total = $total + $output[$col];
         }
         notours:
     }
@@ -194,12 +212,12 @@ $zcol = count($colnames);
 
     if ($sum == "yes") {
         echo '<tr>
-   <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>
-    Total Issuance '.($currencysign).''.number_format($total).' million   //  Total Offerings '. number_format($num_deals).'</td>
+   <td colspan="' . $cols . '" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>
+    Total Issuance ' . ($currencysign) . '' . number_format($total) . ' million   //  Total Offerings ' . number_format($num_deals) . '</td>
     </tr>';
     } else {
         echo '<tr>
-     <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>Total Offerings '.number_format($num_deals).'</td>
+     <td colspan="' . $cols . '" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>Total Offerings ' . number_format($num_deals) . '</td>
     </tr>';
     }
     echo '</tbody>';
@@ -271,6 +289,30 @@ function jrm_record_inquiry($Like, $inqdate)
 *=======================================================================================
 ****************************************************************************************
 *=======================================================================================
+*   function get_the_user_ip()
+*
+// Display User IP in WordPress --------------------------------------------------------
+function get_the_user_ip() { 
+if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) { 
+//check ip from share internet 
+$ip = $_SERVER['HTTP_CLIENT_IP']; 
+} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) { 
+//to check ip is pass from proxy 
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR']; 
+} else { 
+$ip = $_SERVER['REMOTE_ADDR']; 
+} 
+return apply_filters( 'wpb_get_ip', $ip ); 
+} 
+
+add_shortcode('show_ip', 'get_the_user_ip');
+
+
+
+/***
+*=======================================================================================
+****************************************************************************************
+*=======================================================================================
 *   function crawlerDetect()
 *
 * Detect significant web crawlers
@@ -312,12 +354,79 @@ function crawlerDetect($USER_AGENT)
 
 }
 
+// Force the reloading of style.css  --  remove for production environment
+// Enqueue the parent and child style.css
+//  Styles are lost if turn off.
+// add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+// function my_theme_enqueue_styles() {
+
+//     $parent_style = 'parent-style'; // This is 'twentyeleven-style' for the TwentyEleven theme.
+
+//  //   wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
+//     wp_enqueue_style( 'child-style',
+//         get_stylesheet_directory_uri() . '/style.css',
+//         array( ), filemtime(get_template_directory() . '/style.css')  //,
+//    //    wp_get_theme()->get('Version')  // if versions are to be specified
+//     );
+
+// } 
+
+/*
+ * unclear if this is necessary 3/28/2021
+ */
+// To enable $_SESSIONS  ////////JRM//////////////////////////////////////////////
+// 
+
 add_action('init', 'start_session', 1);  //************************2026 ChatGPT alternative start session
-function start_session() {
+function start_session()
+{
     if (!session_id()) {
         session_start();
     }
-}   
+}                                         //*********Delete if not needed 2026
+// add_action('init', function () {
+//     if (session_status() === PHP_SESSION_NONE) {
+//         session_start();
+//     }
+// }, 1);
+
+add_action('wp_logout', 'end_session');
+add_action('wp_login', 'end_session');
+function end_session()
+{
+    session_destroy();
+}
+add_action('end_session_action', 'end_session');
+//do_action('end_session_action');  Put this anywhere in code where you want to end session
+
+
+
+add_shortcode('jm_pass_parms', 'jm_pass_parms_function');
+
+// pass URL parameters to templates
+// 
+function jm_pass_parms_function($atts)
+{
+
+    global $jm_parm;
+    $jm_parm = array();
+    $jm_parm['datafile'] = $atts['name'];
+
+
+    $return_page = 'Location: /wp-content/themes/twentyeleven-child/page-templates/Read_tables.php';
+    ob_start();
+
+    //header ($return_page);
+//header ( 'Connections: close');
+//get_template_part( '/wp-content/themes/twentyeleven-child/page-templates/Read_tables.php');
+
+    load_template(get_stylesheet_directory() . '/page-templates/Read_tables.php', true, $jr_parm);
+
+    return ob - get_clean();
+
+    exit;
+
+}
 
 // function for pagination previous and next links
 // 
@@ -333,38 +442,26 @@ function pagination_nav($jmarg)
     }
 }
 
-/***
- *=======================================================================================
- ****************************************************************************************
- *=======================================================================================
- *   Manage style sheets for different pages
- *
- *-------------------------------------------------------------------------------------
- */
 // Load page specific CSS files
 add_action('wp_enqueue_scripts', 'jm_load_page_css', 1);
-function jm_load_page_css() {
-// Load for every page
-    wp_enqueue_style('Style', get_stylesheet_directory_uri() . '/style.css');
+function jm_load_page_css()
+{
+
+    // Load for every page
     wp_enqueue_style('AllPages', get_stylesheet_directory_uri() . '/CSS/allpages.css');
-    wp_enqueue_script('nav-toggle', get_stylesheet_directory_uri() . '/js/nav-toggle.js', array(), '1.0', true);
+    wp_enqueue_style('Style', get_stylesheet_directory_uri() . '/style.css');
 
 
-/*--------------------------------------------------------------------------------------*/
+
     // HEADER: tables
     if (!empty($GLOBALS['header_tables_loaded'])) {
 
         wp_enqueue_style('CB_Tables', get_stylesheet_directory_uri() . '/CSS/CBTables.css');
-        wp_enqueue_script( 'jm-mobile-tables',
-            get_stylesheet_directory_uri() . '/js/jm-mobile-tables.js', array(),
-            filemtime( get_stylesheet_directory() . '/js/jm-mobile-tables.js' ), // auto-bumps ver= on every file change
-            true
-        );
-        unset($GLOBALS['header_tables_loaded']);
 
+        unset($GLOBALS['header_tables_loaded']);
         return;
     }
-/*--------------------------------------------------------------------------------------*/
+
     // HEADER: legisl
     if (!empty($GLOBALS['header_legisl_loaded'])) {
 
@@ -374,7 +471,7 @@ function jm_load_page_css() {
         unset($GLOBALS['header_legisl_loaded']);
         return;
     }
-/*--------------------------------------------------------------------------------------*/
+
     // HEADER: misc
     if (!empty($GLOBALS['header_misc_loaded'])) {
 
@@ -383,7 +480,7 @@ function jm_load_page_css() {
         unset($GLOBALS['header_misc_loaded']);
         return;
     }
-/*--------------------------------------------------------------------------------------*/
+
     // HEADER: cbdocs
     if (!empty($GLOBALS['header_cbdocs_loaded'])) {
 
@@ -392,7 +489,7 @@ function jm_load_page_css() {
         unset($GLOBALS['header_cbdocs_loaded']);
         return;
     }
-/*-------------------------------------------------------------------------------------*/
+
     // HEADER: home (THIS is where child-style is needed)
     if (!empty($GLOBALS['header_home_loaded'])) {
 
@@ -402,23 +499,24 @@ function jm_load_page_css() {
             ['wp-block-library'],
             wp_get_theme()->get('Version')
         );
-/*-------------------------------------------------------------------------------------*/
+
         unset($GLOBALS['header_home_loaded']);
         return;
     }
 }
-/*-------------------------------------------------------------------------------------*/
+
 // Dequeue the parent styles
 add_action('wp_enqueue_scripts', function () {
-        wp_dequeue_style('twenty-twenty-one-style');
-        wp_deregister_style('twenty-twenty-one-style');
 
-        // Remove block theme styles that cause menu boxes
-        wp_dequeue_style('wp-block-library-theme');
-        wp_deregister_style('wp-block-library-theme');
-    
+    wp_dequeue_style('twenty-twenty-one-style');
+    wp_deregister_style('twenty-twenty-one-style');
+
+    // Remove block theme styles that cause menu boxes
+    wp_dequeue_style('wp-block-library-theme');
+    wp_deregister_style('wp-block-library-theme');
+
 }, 20);
-/*-------------------------------------------------------------------------------------*/
+
 add_action('wp_enqueue_scripts', function () {
 
     // Required for Twenty Twenty-One nav toggles
@@ -428,34 +526,23 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('wp-block-library');
 
 }, 5);
-/*------------------------------------------------------------------------------------*/
+
 // Disable submenu toggles in Twenty Twenty-One
 add_filter('twenty_twenty_one_show_submenu_indicators', '__return_false');
-/*------------------------------------------------------------------------------------*/
+
 //  Deregister the SideBar so we do not get it on every page
 add_action('widgets_init', function () {
     unregister_sidebar('sidebar-1');
-}, 11); 
-/*------------------------------------------------------------------------------------*/
-/***
- *=======================================================================================
- ****************************************************************************************
- *=======================================================================================
- *   For relative addressing for forms and template loads
- *
- *---------------------------------------------------------------------------------------
- */
+}, 11);
+
+// For relative addressing for forms and template loads
 add_action('admin_post_nopriv_cdn_interest_form', 'handle_cdn_interest_form');
 add_action('admin_post_cdn_interest_form', 'handle_cdn_interest_form');
 add_action('admin_post_nopriv_usd_interest_form', 'handle_usd_interest_form');
 add_action('admin_post_usd_interest_form', 'handle_usd_interest_form');
 add_action('admin_post_nopriv_agg_interest_form', 'handle_agg_interest_form');
 add_action('admin_post_agg_interest_form', 'handle_agg_interest_form');
-/*
-*
-*
-*
-*****************************************************************************************/
+
 function handle_cdn_interest_form()
 {
     // Optional safety check
@@ -515,17 +602,3 @@ function handle_agg_interest_form()
     wp_redirect(home_url('/cbaggregate/'));
     exit;
 }
-
-// for Claude.ai debugging Jan 2026 for block editor
-function custom_gallery_css()
-{
-    echo '<style type="text/css">
-    .wp-block-gallery.columns-4.is-layout-flex figure.wp-block-image {
-        display: inline-block !important;
-        width: 23.5% !important;
-        margin: 0.5% !important;
-        vertical-align: top !important;
-    }
-    </style>';
-}
-add_action('wp_head', 'custom_gallery_css');

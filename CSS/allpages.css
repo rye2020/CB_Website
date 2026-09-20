@@ -1,3 +1,13 @@
+/*
+ Theme Name:     Twenty Twenty-One Child
+ Theme URI:      http://example.com/twenty-twenty-one-child/
+ Description:    Twenty Twenty One Child Theme
+ Author:         Jerry Marlatt
+ Author URI:     http://www.us-covered-bonds.com
+ Template:       twentytwentyone-child
+ Version:        1.0.0  Jan 16,2026
+ */
+
 /*------------------------ALL PAGES STYLING-----------------------------*/
 
 /*----------------------------------------------------------------------*/
@@ -5,116 +15,446 @@
 /*----------------------------------------------------------------------*/
 
 /* control spacing between #branding and #main  */
-#site-title {
+#site-title a {
 	padding: 0;
-	margin: 0 0 0 -9%;  /* Adjust Site Title  */
+	margin: 0;
+	color: blue;
+	text-align: center;
+
+	/* Adjust Site Title  */
+}
+
+h1#site-title {
+	margin-bottom: 0;
 }
 
 #site-description {
-	margin: 0 0 0 -9%;  /* Adjust Site Description */
+	margin: 0 0 0 0;
+	color: blue;
+	text-align: center;
+	/* Adjust Site Description */
 	/*color :red !important;         MERRY CHRISTMAS*/
 	/*font-size: 200%;               MERRY CHRISTMAS*/
 }
 
-#branding #searchform {
-	top: 1.8em; 
+#branding  hgroup {
+	margin: 0 7.6%;
+	text-align: center;
 }
+form.search-form {
+	margin-bottom: 5px;
+	float: right;
+	clear: both;
+}
+
 /*! ---END FORMAT ALL HEADERS-----*/
 
 /*----------------------------------------------------------------------*/
 /*--------------------------FORMAT ALL PAGES----------------------------*/
 /*----------------------------------------------------------------------*/
 
-body  {
-        padding: 0 0;
+html {
+	margin: 0;
+}
+
+body {
+	padding: 0 0;
 }
 
 #page {
-		width: 100%;
-        max-width: 1920px;  
-}
-
-#branding {
-		margin: 0 5px;
+	width: 100%;
+	max-width: 1600px;
+	background-color: white;
+	align-items: center;
+	margin: auto;
 }
 
 #main {
-	padding-top:0.25em;
-        font-size:small; 
-        background: white;
-		margin: 0;
+	padding-top: 1.5em;
+	font-size: small;
+	background-color: white;
+	margin: 0;
+	place-items: center;   /* CENTER ALL ITEMS ON PAGE */
+}
+
+#primary {
+	background-color: white;
 }
 
 #content {
-     margin: 0 34% 0 3.8%;
-     width: 63.5%;
+	margin: auto 0 auto;
+	width: 63.5%;
 }
 
 #container {
-      background: white;
+	background: white;
 }
 
 #jmarchive {
-      background: white;
+	background: white;
+}
+
+.jmpost {
+	clear: left;
+}
+
+article .entry-header {
+	display: none;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	font: bold 12px Georgia;
+	margin-bottom: 25px;
 }
 
 article.intro {
-	display: none; /* delete unnecessary extra vertical space */
+	display: none;
+	/* delete unnecessary extra vertical space */
 }
 
 article.j1 {
-	margin: 0 0 1.625em; /* format my commentary pages since no longer part of article.intro */
+	margin: 0 0 1.625em;
+	/* format my commentary pages since no longer part of article.intro */
 }
+
 /*!---END FORMAT ALL PAGES----*/
 
 /*----------------------------------------------------------------------*/
 /*----------------------------FORMAT MENUS------------------------------*/
 /*----------------------------------------------------------------------*/
 
-nav#access {
-	margin: 0 ;  /* Remove the padding after the menu navigation bar */
-	background: blue /*hsla(240,50%,60%,0.8)*/;      /* change background color to BLUE  */
-}
+/* =========================================================
+   NAV MENU (#access) - CLEANED UP
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. CONTAINER
+   --------------------------------------------------------- */
 
 #access {
-	margin: 0;
+	margin: 0 auto 6px;
+	background: blue;
+	display: block;
+	clear: both;
+	width: 100%;
+	line-height: 30px;
 }
 
-#access li {
+/* ---------------------------------------------------------
+   2. TOP-LEVEL MENU LIST
+   --------------------------------------------------------- */
+
+ul.menu {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 -0.8125em;
+	width: min-content;
+	white-space: nowrap;
+}
+
+ul.menu:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+ul.menu > li {
+	position: relative;
 	height: 30px;
+	display: inline-block;
 	vertical-align: middle;
 	font-weight: bold;
+	list-style: none;
 }
 
-#access li:first-of-type {
+ul.menu > li:first-of-type {
 	margin-left: 10px;
 }
 
-/*  CHANGE RIGHT MARGIN FROM 7.6% --> 0       */
-#access div {
+ul.menu > li > a {
+	display: block;
+	padding: 0 0.5em;
+	color: white;
+	text-decoration: none;
+}
+
+ul.menu > li > a:hover {
+	background: #444;
+}
+
+/* ---------------------------------------------------------
+   3. SUBMENUS (all levels)
+   Grouped and ordered by nesting depth so specificity stays
+   predictable. position and display are deliberately split
+   into separate rules at different specificity levels - see
+   the note above the base rule below for why.
+   --------------------------------------------------------- */
+
+/* Base: every submenu is absolutely positioned.
+   Kept ID-scoped ONLY for `position` (nothing else competes for
+   position at ID-level specificity anymore, but keeping this scoped
+   tightly avoids reopening that fight later). display:none is handled
+   separately below at class-level, so the class-based hover rule can
+   still override it - an ID-scoped display:none can never be beaten
+   by a non-ID hover rule, no matter how many classes it has. */
+#access ul.sub-menu {
+	position: absolute;
+	list-style: none;
+	padding: 0;
 	margin: 0;
+	background-color: lightsteelblue;
 }
 
-/*  REDUCE PADDING RIGHT  FROM 1.2125em -->  0.500em*/
+ul.sub-menu {
+	display: none;
+}
+
+/* Submenu items stack full-width, no floats */
+#access ul ul li {
+	position: relative;
+	float: none;
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+#access ul.sub-menu li a {
+	display: block;
+	padding: 10px 15px 10px 30px; /* indent */
+	color: white;
+	text-decoration: none;
+}
+
+/* Level 1: appears BELOW its parent top-level item */
+ul.menu > li > ul.sub-menu {
+	top: 100%;
+	left: 0;
+}
+
+/* Level 2+: appears to the RIGHT of its parent item */
+ul.sub-menu li ul.sub-menu {
+	top: 0;
+	left: 100%;
+}
+
+/* Reveal on hover, at any depth */
+ul.menu li:hover > ul.sub-menu,
+ul.sub-menu li:hover > ul.sub-menu {
+	display: block;
+	z-index: 99999;
+}
+
+/* ---------------------------------------------------------
+   4. HOVER / COLOR STATES
+   --------------------------------------------------------- */
+
 #access a {
-	Padding: 0 .500em;
+	color: white;
 }
 
+#access ul li a:hover,
+#access ul.sub-menu li a:hover {
+	background-color: lightcoral;
+	color: black;
+}
+
+/* ---------------------------------------------------------
+   5. SUBMENU TOGGLE BUTTON (TT1 default) - disabled
+   We're using hover-based flyouts instead, so the
+   +/- toggle button markup is hidden rather than removed
+   from the template.
+   --------------------------------------------------------- */
+
+button.sub-menu-toggle {
+	display: none;
+}
+
+/* ---------------------------------------------------------
+   6. BLOCK-NAVIGATION RESET
+   Strips default Gutenberg nav block styling so it can't
+   visually conflict with the classic #access menu above.
+   --------------------------------------------------------- */
+
+.wp-block-navigation *,
+.wp-block-navigation-item__content {
+	background: none;
+	box-shadow: none;
+	outline: none;
+	border: none;
+}
+
+/* ---------------------------------------------------------
+   7. HAMBURGER TOGGLE (small screens)
+   Requires a button in the markup - see accompanying note
+   on where to add it in header.php:
+
+   <button class="nav-toggle" aria-expanded="false" aria-controls="menu-menu-a">
+       <span class="screen-reader-text">Menu</span>
+       <span class="nav-toggle-bars"></span>
+   </button>
+
+   Placed as a direct child of #access, immediately before
+   .menu-menu-a-container. JS toggles a `.nav-open` class on
+   #access (see nav-toggle.js).
+   --------------------------------------------------------- */
+
+	#access {
+		background: white;
+	}
+
+	#access a {
+		color: black;
+	}
+
+	#access ul.sub-menu li a {
+		color: black;
+	}
+
+/*	#main {
+		padding: 0;
+	}  */
+
+   .nav-toggle {
+	display: none; /* hidden on wide screens */
+	background: transparent;
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	box-sizing: border-box;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	margin: 0 0 0 10px;
+	padding-left: 10px; /* nudges the icon right, adds breathing room from whatever sits to the left */
+	cursor: pointer;
+	position: relative;
+	background: white; 
+}
+
+.nav-toggle-bars {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 24px;
+	height: 3px;
+	background: blue;
+	transform: translate(-50%, -50%);
+}
+
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 24px;
+	height: 3px;
+	background: blue;
+}
+
+.nav-toggle-bars::before {
+	top: -9px;
+}
+
+.nav-toggle-bars::after {
+	top: 9px;
+}
+
+@media (max-width: 781px) {
+
+	.nav-toggle {
+		display: block;
+	}
+
+	/* Collapse the bar to the size of the hamburger button when the
+	   menu is closed, instead of a full-width blue strip with nothing
+	   in it. Once opened, #access needs to go back to full width so
+	   the stacked menu below it can lay out correctly. */
+	#access {
+		width: fit-content;
+			margin-left: 0;
+			margin-right: 0;
+	}
+
+	#access.nav-open {
+		width: 100%;
+	}
+
+	/* Menu hidden by default, shown when JS adds .nav-open to #access */
+	#access .menu-menu-a-container {
+		display: none;
+		width: 100%;
+	}
+
+	#access.nav-open .menu-menu-a-container {
+		display: block;
+	}
+
+	/* Stack top-level items in a column instead of a row */
+	#access.nav-open ul.menu {
+		display: block;
+		width: 100%;
+		white-space: normal;
+	}
+
+	#access.nav-open ul.menu > li {
+		width: 100%;
+		height: auto;
+	}
+
+	#access.nav-open ul.menu > li:first-of-type {
+		margin-left: 0;
+	}
+
+	/* Submenus stack inline below their parent instead of flying out,
+	   since absolute-positioned flyouts don't work well in a column
+	   layout with no hover on touch devices */
+	#access.nav-open ul.sub-menu {
+		display: none;
+		position: static;
+		background-color: rgba(255, 255, 255, 0.08);
+	}
+
+	#access.nav-open li.submenu-open > ul.sub-menu {
+		display: block;
+	}
+
+	/* Hide Twitter/X embeds (and similar iframe embeds) while the mobile
+	   menu is open. Iframes paint on their own compositing surface and
+	   can intercept taps meant for the dropdown underneath, regardless
+	   of our z-index - hiding them is more reliable than fighting
+	   stacking order. */
+	body.nav-menu-open .twitter-tweet,
+	body.nav-menu-open iframe[src*="twitter.com"],
+	body.nav-menu-open iframe[src*="platform.twitter.com"],
+	body.nav-menu-open iframe[src*="x.com"],
+	body.nav-menu-open iframe[title*="Twitter" i],
+	body.nav-menu-open iframe[title*="X Post" i] {
+		visibility: hidden;
+	}
+}
 /*! ---END FORMAT MENUS------*/
 
 /*----------------------------------------------------------------------*/
-/*---------------------FORMAT PAGE NAME AND SPACING---------------------*/
+/*----------------------------FORMAT POSTS------------------------------*/
 /*----------------------------------------------------------------------*/
 
-/*
-*----------kill display of .entry-title [PAGE NAME] and spacing
-*              because we will use DEFAULT TEMPLATE to avoid RECENT POSTS  at bottom
-*/
-article[class$="hentry"] {
-	display: none;
+header.page-header.alignwide {
+	display:none;
 }
-article.hentry.type-post.status-publish {width:750px;}
-/*! ---END FORMAT PAGE NAME AND SPACING----*/
+
+div.jmpost {
+	clear: left;
+	/*text-align:center;*/
+}
+
+nav.navigation.post-navigation {
+	display:none;
+}
 
 
 /*------------------------RESPONSIVE STYLING-----------------------------*/
@@ -123,229 +463,246 @@ article.hentry.type-post.status-publish {width:750px;}
 /*---------------------RESPONSIVE ADJUSTMENTS---------------------------*/
 /*----------------------------------------------------------------------*/
 
-    .home-container {
-	    display: flex;
-	    flex-wrap: nowrap;
-	    -webkit-flex: 1;
-        flex: 1;
-/*	    -moz-flex: 1;
-	    -ms-flex: 1;
-	    -webkit-flex-direction: column;
-	    -moz-flex-direction: column;
-	    -ms-flex-direction: column;*/
-    }
-@media only screen and (max-width: 1024px) {  /* Apply to all mobile devices */
-	.home-box {
-		width: 100%;
-		max-width: none;
-	}
-		
+@media only screen and (max-width: 1024px) {
+
+	/* Apply to all mobile devices */
 	#access div {
-		padding-right: 0px;      /*  eliminate the padding on the right for the menu  */
+		padding-right: 0px;
+		/*  eliminate the padding on the right for the menu  */
 	}
-	#access ul {                     /*  eliminate the padding on the right for the menu  */
+
+	#access ul {
+		/*  eliminate the padding on the right for the menu  */
 		margin: 0;
 	}
+
 	img.j1photo {
 		max-width: 100%;
 		display: none;
 	}
-	
+
 	img.j2photo {
 		max-width: 50%;
 	}
-        img.j3photo {
-                 max-width: 100%;
-        }
-	div.jmpost {
-		max-width:75%; 
-		margin: auto;
-	}
-	article.hentry.type-post.status-publish {width:70%;}
 
-/*--
+	img.j3photo {
+		max-width: 100%;
+	}
+
+	div.jmpost {
+		max-width: 75%;
+		text-align: center;
+	}
+
+	article.hentry.type-post.status-publish {
+		width: 70%;
+	}
+
+	/*--
 *-----CB TABLES FOR SMALL DEVICES----
 */
 
-      table.t1canadianCBD {
-                margin: 0;
-                width: auto;
-                float: none; 
-                padding: 0; 
-		}
-        #access {
-                margin: 0;
-                width: auto;
-                padding: 0;
-                border: 0;
-        }
+	table.t1canadianCBD {
+		margin: 0;
+		width: auto;
+		float: none;
+		padding: 0;
+	}
 
-        #page #content #main {
-			width: auto;
-			margin: 0;
-			padding: 0;
-			border: 0;
-			float: none;
-        }  
-}  
+	/* NOTE: the old #access { margin:0; width:auto; padding:0; border:0; }
+	   reset that used to live here has been removed - it was fighting
+	   the Section 1 container rule (width: 100%) and the mobile menu
+	   rules above at every width between 482px and 1024px. If #access
+	   needs different sizing specifically in this 782-1024px "tablet"
+	   range (wider than the hamburger breakpoint, narrower than desktop),
+	   add a scoped rule here instead of a bare #access reset. */
+
+	#page #content #main {
+		width: auto;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		float: none;
+	}
+}
 
 /*                                                                         */
 /*-------------------RESPONSIVE ISSUANCE TABLES----------------------------*/
 /*                                                                         */
 
-@media only screen and (max-width: 481px) and (min-width: 375px) and (orientation: portrait) {
+@media only screen and (max-width: 789px) and (orientation: portrait) {
 	body {
 		width: auto;
 		Max-width: 100%;
 	}
-	#main #content { margin:0 }
 	
-	.home-box {
+	#page {
+		padding:0 3em;
+		max-width:95%;
+		margin: auto;
+	}
+
+	#main #content {
+		margin: 0
+	}
+
+	h1.t1USDCB {
+		font-size: 18px;
+		text-align: left;
+		font-weight: bold;
+	}
+
+	p.jmsorter {
+		display: none;
+	}
+
+	div.jmpost {
+		max-width: 100%;
+	}
+
+	article.hentry.type-post.status-publish {
 		width: 100%;
-		max-width: none;
-	}
-	
-    .home-container {
-    	display: flex;
-    	flex-wrap: nowrap;
-    	-webkit-flex: 1;
-    	-moz-flex: 1;
-    	-ms-flex: 1;
-        flex: 1;
-    }
-	
-  h1.t1USDCB {
-	font-size: 18px; 
-	text-align:left; 
-	font-weight: bold;
-  }
- /* adjust Twitter widget  */
-/*	div.twitter-container {      
-		width: 39%;
-		max-width: 110px;
-	}
-*/	
-	.Fcontainer {
-		max-width: 56%;
-	}  
-	
-  p.jmsorter {display: none;}
-	
-	div.jmpost { max-width: 100%;}
-	article.hentry.type-post.status-publish {width:100%;}
-	.singular.entry-header { width: 100%;}
-	
-  table.t1CanadianCBD.aggregateCB { 
-	  border: 0; 
-	  width: 75%;
 	}
 
- table.t1CanadianCBD.annualCB { 
-	  border: 0; 
-	  width: 100%;
+	.singular.entry-header {
+		width: 100%;
 	}
 
-  table.t1CanadianCBD caption { font-size: 1.4em; }
-  
-  table.t1CanadianCBD thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
-  table.t1CanadianCBD tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-  
-  table.t1CanadianCBD td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .7em;
-    text-align: left!important;
-	position:relative;
-	padding-left: 20%;
-	width: 70% ;
+	table.t1CanadianCBD.aggregateCB {
+		border: 0;
+		width: 100%;
 	}
-  
-  table.t1CanadianCBD td::before {
-    content: attr(data-label);
- 	position: absolute;
+
+	table.t1CanadianCBD.annualCB {
+		border: 0;
+		width: 100%;
+	}
+
+	table.t1CanadianCBD caption {
+		font-size: 1.4em;
+	}
+
+	table.t1CanadianCBD thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	table.t1CanadianCBD tr {
+		border-bottom: 3px solid #ddd;
+		display: block;
+		margin-bottom: .625em;
+		max-width: 95%;
+
+	}
+
+	table.t1CanadianCBD td {
+		border-bottom: 1px solid #ddd;
+		display: block;
+		font-size: .5em;
+		text-align: left !important;
+		position: relative;
+		padding-left: 30%;
+		text-indent: 1em;
+	}
+
+	table.t1CanadianCBD td::before {
+		content: attr(data-label);
+		position: absolute;
 		/* Top/left values mimic padding */
-	top: 6px;
-	left: 6px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  table.t1CanadianCBD td:last-child {
-    border-bottom: 0;
-  }
+		top: 6px;
+		left: 6px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	table.t1CanadianCBD td:last-child {
+		border-bottom: 0;
+	}
 }
 
 
-@media only screen and (max-width: 768px) and (min-width: 482px) and (orientation: landscape)
-    {
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
 	body {
-		width: 768px ;
-	}  
-	.home-box {
-		width: 100%;
-		max-width: none;
+		width: auto;
+		max-width: 100%px;
 	}
-			
-		#main #content { margin:0 }
-		
-    .home-container {
-    	display: flex;
-    	flex-wrap: nowrap;
-    	-webkit-flex: 1;
-    	-moz-flex: 1;
-    	-ms-flex: 1;
-        flex: 1;
-    }
 
-  h1.t1USDCB {
-	font-size: 18px; 
-	text-align:left; 
-	font-weight: bold;
-  }
-	div.twitter-container {       /* adjust Twitter widget  */
+	#page {
+		padding:0 3em;
+		max-width:95%;
+		margin: auto;
+	}
+
+	#main #content {
+		margin: 0
+	}
+
+	h1.t1USDCB {
+		font-size: 18px;
+		text-align: left;
+		font-weight: bold;
+	}
+
+	#jmfilter {
+		padding-right: 1.5em;
+		width: 95%;
+	}
+
+	div.twitter-container {
+		/* adjust Twitter widget  */
 		width: 27%;
 		max-width: 110px;
 		background-color: green;
 	}
-	div.Fcontainer {              /* make room for Twitter widget   */
-		width: 90%;
-		max-width: 70%;
-	}
-	div.jmpost {max-width: 100%;}
-	article.hentry.type-post.status-publish {width:100%;}
-	
 
-/*                                                                         */
-/*-------------------RESPONSIVE NAVIGATION MENU----------------------------*/
-/*                                                                         */
-	.menu li.menu-item-type-post_type:first-child { 
-	width: 30%;
-    float: left;
-    display: flex;
+	div.jmpost {
+		max-width: 100%;
+	}
+
+	article.hentry.type-post.status-publish {
+		width: 100%;
+	}
+
+
+	/*                                                                         */
+	/*-------------------RESPONSIVE NAVIGATION MENU----------------------------*/
+	/*                                                                         */
+	.menu li.menu-item-type-post_type:first-child {
+		width: 30%;
+		float: left;
+		display: flex;
+	}
 }
+
+@media screen and (max-width: 375px) {
+	.menu li.menu-item-type-post_type:first-child {
+		width: 25%;
+	}
 }
-@media screen and (max-width: 375px ) 
-	{.menu li.menu-item-type-post_type:first-child { width: 25%; }}
-@media screen and (max-width: 481px ) and (min-width:375px) 
-	{.menu li.menu-item-type-post_type:first-child { width: 100%; }}
-@media screen and (max-width: 768px ) and (min-width:481px) 
-	{.menu li.menu-item-type-post_type:first-child { width: 15%; }}
-@media screen and (max-width: 1024px ) and (min-width:768px) 
-	{.menu li.menu-item-type-post_type:first-child { width: 10%; }} 
+
+@media screen and (max-width: 481px) and (min-width:375px) {
+	.menu li.menu-item-type-post_type:first-child {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) and (min-width:481px) {
+	.menu li.menu-item-type-post_type:first-child {
+		width: 15%;
+	}
+}
+
+@media screen and (max-width: 1024px) and (min-width:768px) {
+	.menu li.menu-item-type-post_type:first-child {
+		width: 10%;
+	}
+}
 
 /*! ---END RESPONSIVE ADJUSTMENTS----*/
 
@@ -353,22 +710,25 @@ article.hentry.type-post.status-publish {width:750px;}
 /*---------------------------FLUID IFRAMES------------------------------*/
 /*----------------------------------------------------------------------*/
 .fluidMedia {
-    position: relative;
-    padding-bottom: 125%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
-                          /* I used 8:10 (10/8 = 1.25 or 125% for vertical PDF  */
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
+	position: relative;
+	padding-bottom: 125%;
+	/* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+	/* I used 8:10 (10/8 = 1.25 or 125% for vertical PDF  */
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
 }
 
 .fluidMedia iframe {
-    position: absolute;
-    display: block;       /* iframes are inline by default */
-    top: 0; 
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+	position: absolute;
+	display: block;
+	/* iframes are inline by default */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
 }
+
 /*! ------END FLUID FRAMES-------*/
 
 /*----------------------------------------------------------------------*/
@@ -376,20 +736,29 @@ article.hentry.type-post.status-publish {width:750px;}
 /*----------------------------------------------------------------------*/
 
 @media only print {
- 	#site-title  {
-		margin: 0 0 0 0;   /*--FIX MARGINS FOR SITE-TITLE--*/
-		width: 80%;        /*--REDUCE THE WIDTH---*/
-	} 
+	#site-title {
+		margin: 0 0 0 0;
+		/*--FIX MARGINS FOR SITE-TITLE--*/
+		width: 80%;
+		/*--REDUCE THE WIDTH---*/
+	}
+
 	#site-description {
-		margin: 0 0 0 0;   /*--FIX MARGINS FOR SITE-DESCRIPTION--*/
-		width: 80%;        /*--REDUCE THE WIDTH---*/
+		margin: 0 0 0 0;
+		/*--FIX MARGINS FOR SITE-DESCRIPTION--*/
+		width: 80%;
+		/*--REDUCE THE WIDTH---*/
 	}
+
 	#access {
-		display: none;  /*--DO NOT PRINT MENUS---------*/
+		display: none;
+		/*--DO NOT PRINT MENUS---------*/
 	}
+
 	#main {
 		font-size: x-small;
 		margin: 0 0 0 0 !important;
 	}
 }
+
 /*! ---END FORMAT PRINT OUTPUT----*/

@@ -1,6 +1,8 @@
 <?php
 /**
-* Template name: CBAgg_SetOurs
+* Template Name: CBAgg_SetOurs
+* Template Post Type: page
+* 
  * Template for setting "Ours" in the database tables for CBs
  *
  * This is the template that updates "Ours" in the 

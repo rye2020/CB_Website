@@ -21,6 +21,7 @@ $maturity = '';
 $comment = '';
 $title = '';
 
+
 if ( isset( $_POST['Submitmisc'] )) { 
 	$title = "Selected by ";
 	$like = "WHERE ";

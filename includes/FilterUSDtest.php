@@ -1,7 +1,8 @@
 <?php
 $like = " WHERE Currency = '$'";
+$title = '';
 $currency = '$'; 
-
+$country = '';
 
 // test if $_SESSION elements have been set
 if (isset ($_SESSION["jrm_form_elements"])) {   
@@ -11,7 +12,7 @@ if (isset ($_SESSION["jrm_form_elements"])) {
 	$title = $_SESSION["jrm_form_elements"]['title'];
 	$currency = $_SESSION["jrm_form_elements"]['currency'];
 	$country = $_SESSION["jrm_form_elements"]['country'];
-	
+	$issueyear = $_SESSION["jrm_form_elements"]['issueyear'];
     // remove all session variables
     session_unset(); 
 	}

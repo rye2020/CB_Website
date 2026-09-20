@@ -5,7 +5,7 @@
  *
  * This is the template that displays the 
  * table of CDN issuance from SQL .
- *   redesigned from the first version 
+ *   redisigned from the first version 
  *
  *
  * @package WordPress
@@ -27,7 +27,7 @@ $legacy = "";
 $title = "Selected by ";
      if ( isset( $_POST['Submit1'] ) ) { 
  $like = "WHERE ";
-$issuer = $_POST['issuerselect'];
+$issuer = $_POST['issuerinterest'];
      if ($issuer !== "") {         
 	$like = $like."Issuer LIKE '%".$issuer."%'";
 	$title = $title."Issuer ";

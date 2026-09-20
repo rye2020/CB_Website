@@ -1,8 +1,9 @@
 <?php
 /**
-* Template name: Legislation
+* Template Name: Legislation
+* Template Post Type: page
  *
-  * Template for displaying all legislation pages
+ * Template for displaying all legislation pages
  *
  * @package WordPress
  * @subpackage Twenty_Eleven_Child
