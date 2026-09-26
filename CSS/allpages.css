@@ -448,7 +448,8 @@ header.page-header.alignwide {
 }
 
 div.jmpost {
-	clear: left;
+	width: 100%;
+	max-width: 750px;
 	/*text-align:center;*/
 }
 
