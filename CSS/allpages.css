@@ -353,7 +353,7 @@ button.sub-menu-toggle {
 	left: 0;
 	width: 24px;
 	height: 3px;
-	background: blue;
+	background: black;
 }
 
 .nav-toggle-bars::before {
