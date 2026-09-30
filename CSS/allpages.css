@@ -342,7 +342,7 @@ button.sub-menu-toggle {
 	left: 50%;
 	width: 24px;
 	height: 3px;
-	background: blue;
+	background: black;
 	transform: translate(-50%, -50%);
 }
 
