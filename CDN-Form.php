@@ -14,10 +14,10 @@
 /*header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
 header("Cache-Control: no-cache");
 header("Pragma: no-cache");
-require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php'); 
+require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php'); */
 
-if(!session_id()) 
-    session_start(); */
+if (!session_id())
+    session_start();
 
 $like = "";
 $issuer = '';
