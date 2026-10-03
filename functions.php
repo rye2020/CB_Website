@@ -41,13 +41,10 @@
  * Functions contained in this file are:
  *
  *    1.  jrm_get_pagename()
- *    3.  jrm_get_table()
- *    4.  jrm_record_inquiry()
- *    5.  get_the_user_ip()
- *    6.  crawlerDetect()
- *    7.  my_theme_enqueue_styles()
- *    8.  function start_session()
- *    9.  function end_session()
+ *    2.  jrm_get_table()
+ *    3.  jrm_record_inquiry()
+ *    4.  crawlerDetect()
+ *    5.  function start_session()
  *-------------------------------------------------------------------------------------------------
  *=======================================================================================
  ****************************************************************************************
@@ -200,7 +197,7 @@ $zcol = count($colnames);
     </tr>';
     } else {
         echo '<tr>
-     <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;";>Total Offerings '.number_format($num_deals).'</td>
+     <td colspan="'.$cols.'" style="text-align:center; background-color:blue; color:white; font-size: medium; font-weight: normal;">Total Offerings '.number_format($num_deals).'</td>
     </tr>';
     }
     echo "</tfoot>";
@@ -294,7 +291,6 @@ function crawlerDetect($USER_AGENT)
         'Baidu' => 'baidu',
         'Spider' => 'spider',
         'Apple' => 'applebot',
-        'HUAWEI' => 'OPPO A33',
         'HUAWEI2' => 'HUAWEIFRD-AL00',
         'YANDEX' => 'YandexBot',
         'Hetzner' => 'Seekport Crawler',
