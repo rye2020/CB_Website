@@ -309,12 +309,12 @@ function crawlerDetect($USER_AGENT)
 
 }
 
-add_action('init', 'start_session', 1);  //************************2026 ChatGPT alternative start session
-function start_session() {
-    if (!session_id()) {
-        session_start();
-    }
-}   
+// add_action('init', 'start_session', 1);  //************************2026 ChatGPT alternative start session
+// function start_session() {
+//     if (!session_id()) {
+//         session_start();
+//     }
+// }   
 
 // function for pagination previous and next links
 // 
