@@ -19,23 +19,33 @@ global $wpdb; ?>
 $like = "";
 $tablename = '';
 $title = '';
-// check for URL parameter
-$parms = htmlspecialchars($args['file']);
 
-if ($parms === "CBAggregate" || $parms === "MTN_Table" || $parms === "ABS" || $parms === "Misc" ) {
+// Only these tables may be displayed; visitor-data tables are restricted to admins
+$public_tables = array('CBAggregate', 'MTN_Table', 'ABS', 'Misc');
+$admin_tables  = array('CB_Inquery', 'cb_visitors');
+$is_admin_user = current_user_can('manage_options');
+
+// check for URL parameter
+$parms = isset($args['file']) ? $args['file'] : '';
+
+if ( in_array($parms, $public_tables, true) ) {
 	$tablename =  $parms;
 	$title = $tablename;
 	$args = array();
 }
-elseif ( isset( $_POST['Submittbnm'] ) ) { 
- 	$tablename = $_POST['tablename'];
-	$title = "Data from ".$tablename;
+elseif ( isset( $_POST['Submittbnm'] ) ) {
+	$requested = sanitize_text_field( wp_unslash( isset($_POST['tablename']) ? $_POST['tablename'] : '' ) );
+	if ( in_array($requested, $public_tables, true)
+	  || ( $is_admin_user && in_array($requested, $admin_tables, true) ) ) {
+		$tablename = $requested;
+		$title = "Data from ".$tablename;
+	}
 }
 ?>
 
 <div style="width: 80%; float:left;">
 <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 12/23/2015</p>
-<h1 class="t1USDCB";><?php echo $title; ?></h1>
+<h1 class="t1USDCB";><?php echo esc_html($title); ?></h1>
 <p style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
 </div>
 <div style="width:20%; float:right; font-size:small">
@@ -46,8 +56,10 @@ Table Name: <select name='tablename' ><br><br>
 <option value='MTN_Table'>MTN_Table</option>
 <option value='ABS'>ABS</option>	
 <option value='Misc'>Misc</option>
+<?php if ($is_admin_user) { ?>
 <option value='CB_Inquery'>CB_Inquery</option>
 <option value='cb_visitors'>cb_visitors</option>
+<?php } ?>
 </select>
 <input type='submit' name='Submittbnm' value='Submit' />
   </form>
@@ -66,7 +78,10 @@ echo "<thead><tr>";
 if ($tablename != "") {
 //-----------GET COLUMN HEADERS
 $colnames = array();
-$query = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME="'.$tablename.'"';
+$query = $wpdb->prepare(
+	'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s ORDER BY ORDINAL_POSITION',
+	$tablename
+);
 $colnames = $wpdb->get_results($query, ARRAY_N);
 $z = count($colnames);
 for ($y=0; $y < $z; $y++) {
