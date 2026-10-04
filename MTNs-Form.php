@@ -113,7 +113,7 @@ if ( isset( $_POST['Submitmtns'] )) {
 	$_SESSION["jrm_form_elements"]['like'] = $like;
 	$_SESSION["jrm_form_elements"]['title'] = $title;
 	
-	header ('Location: /wp-content/themes/twentyeleven-child/page-templates/MTNs.php/');
+	header ('Location: /wp-content/themes/twentytwentyone-child/page-templates/MTNs.php/');  // (Claude) was twentyeleven-child
 	header ('Connections: close');
 	exit;
 	 }
