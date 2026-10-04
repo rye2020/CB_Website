@@ -15,6 +15,10 @@
  * version 1.0 July 10, 2015
  */
 
+if ( ! current_user_can('manage_options') ) {   // (Claude) admin-only page
+    wp_die('Not allowed', 403);                 // (Claude)
+}                                               // (Claude)
+
 get_header(); ?>
 
 <div style="width:20%; float:right; font-size:small">

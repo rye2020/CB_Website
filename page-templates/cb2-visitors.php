@@ -14,6 +14,10 @@
  * @ author J.R.Marlatt
  * version 1.1 12/1/2018
  */
+if ( ! current_user_can('manage_options') ) {   // (Claude) admin-only page
+    wp_die('Not allowed', 403);                 // (Claude)
+}                                               // (Claude)
+
 get_header();
 ?>
 

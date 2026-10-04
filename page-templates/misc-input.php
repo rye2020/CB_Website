@@ -16,6 +16,10 @@
  * version 1.1 November 27,2024
  */
 
+if ( ! current_user_can('manage_options') ) {   // (Claude) admin-only page
+    wp_die('Not allowed', 403);                 // (Claude)
+}                                               // (Claude)
+
 get_header('tables'); ?>
 
 <div style="width:100%;">

@@ -12,6 +12,10 @@
  * version 1.0 March 10, 2022
  */
 
+if ( ! current_user_can('manage_options') ) {   // (Claude) admin-only page
+    wp_die('Not allowed', 403);                 // (Claude)
+}                                               // (Claude)
+
 get_header(); 
 global $wpdb; ?>
 
