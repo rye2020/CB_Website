@@ -274,15 +274,26 @@ function jrm_record_inquiry($Like, $inqdate)
     }
 
     $ipaddress = $_SERVER['REMOTE_ADDR'];
-    $details = json_decode(file_get_contents("http://ipinfo.io/{$ipaddress}/json"));
+    $details   = get_transient('jrm_ipinfo_' . md5($ipaddress));             // (Claude) cached lookup for this IP
+    if ($details === false) {                                                 // (Claude)
+        $details  = array();                                                  // (Claude)
+        $response = wp_remote_get("https://ipinfo.io/{$ipaddress}/json",      // (Claude) https + WordPress HTTP API
+                                  array('timeout' => 3));                     // (Claude) give up after 3 seconds
+        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) == 200) { // (Claude)
+            $details = (array) json_decode(wp_remote_retrieve_body($response), true);       // (Claude)
+        } else {                                                              // (Claude)
+            error_log('[jrm_record_inquiry] ipinfo lookup failed for ' . $ipaddress);       // (Claude)
+        }                                                                     // (Claude)
+        set_transient('jrm_ipinfo_' . md5($ipaddress), $details, DAY_IN_SECONDS); // (Claude) reuse for 24 hours
+    }                                                                         // (Claude)
 
     $jm_inq_data = array(
         'Date' => $inqdate,
         'IP' => $ipaddress,
-        'Country' => $details->country,
-        'Region' => $details->region,
-        'City' => $details->city,
-        'Hostname' => $details->org,
+        'Country'  => $details['country'] ?? '',                              // (Claude) blank if lookup failed
+        'Region'   => $details['region'] ?? '',                               // (Claude)
+        'City'     => $details['city'] ?? '',                                 // (Claude)
+        'Hostname' => $details['org'] ?? '',                                  // (Claude)
         'Query' => substr($Like, 7)
     );
 
