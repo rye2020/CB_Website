@@ -108,7 +108,7 @@ function jrm_get_table($table, $like, $sum, $col, $index = null, $orderby = null
 
     // Non-admins may only read the public data tables                                  (Claude)
     $is_admin_user = current_user_can('manage_options');                                // (Claude)
-    $public_tables = array('CBAggregate', 'MTN_Table', 'ABS', 'Misc', 'CDN_Legacy', 'USD_Issuance'); // (Claude)
+    $public_tables = array('CBAggregate', 'MTN_Table', 'ABS', 'Misc');                 // (Claude)
     if (!$is_admin_user && !in_array($table, $public_tables, true)) {                   // (Claude)
         error_log('[jrm_get_table] Blocked table for non-admin: ' . $table);            // (Claude)
         echo '</tbody></table>';                                                        // (Claude)
