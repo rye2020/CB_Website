@@ -288,13 +288,12 @@ function jrm_record_inquiry($Like, $inqdate)
 
     $jm_inq_format = array('%s', '%s', '%s', '%s', '%s', '%s', '%s');
 
-    $wpdb->show_errors();
+    $wpdb->hide_errors();                                         // (Claude) never show DB errors to visitors
     $wpdb->insert('CB_Inquery', $jm_inq_data, $jm_inq_format);
-    $wpdb->show_errors();
 
     // check if INSERT worked and COPY and RENAME table if exceed size
     if (!$wpdb->insert_id) {
-        echo 'Insert failed';
+        error_log('[jrm_record_inquiry] Failure to insert into CB_Inquery: ' . $wpdb->last_error); // (Claude) was echo 'Insert failed'
     } elseif ($wpdb->insert_id > 2000) {
         //  RENAME TABLE AND CREATE NEW TABLE
         date_default_timezone_set("America/New_York");
