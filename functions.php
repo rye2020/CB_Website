@@ -346,18 +346,38 @@ function crawlerDetect($USER_AGENT)
         'YANDEX' => 'YandexBot',
         'Hetzner' => 'Seekport Crawler',
         'Kyivstar' => 'FunWebProducts',
+        // Generic bot words -- catch crawlers that identify themselves      (Claude)
+        'Bot'       => 'bot',                     // (Claude) Googlebot, AhrefsBot, SemrushBot, etc.
+        'Crawler'   => 'crawler',                 // (Claude)
+        'Crawl'     => 'crawling',                // (Claude)
+        'Scraper'   => 'scrap',                   // (Claude) scraper, scrapy
+        'Slurp'     => 'slurp',                   // (Claude) Yahoo
+        'Meta'      => 'externalagent',           // (Claude) meta-externalagent
+        'Facebook'  => 'facebookexternalhit',     // (Claude)
+        'Measure'   => 'InternetMeasurement',     // (Claude) 185.247.137.30
+        'Headless'  => 'HeadlessChrome',          // (Claude) automated browsers
+        'Lighthouse'=> 'Lighthouse',              // (Claude) PageSpeed checks
+        'Python'    => 'python-',                 // (Claude) python-requests / urllib
+        'Curl'      => 'curl/',                   // (Claude)
+        'Wget'      => 'wget/',                   // (Claude)
+        'GoHTTP'    => 'Go-http-client',          // (Claude)
+        'Java'      => 'Java/',                   // (Claude)
+        'Libwww'    => 'libwww-perl',             // (Claude)
+        'HTTPClient'=> 'HttpClient',              // (Claude) Apache/okhttp clients
+        'Preview'   => 'preview',                 // (Claude) link-preview fetchers
+        'FakeS8'    => 'Android 7.0; SM-G892A',   // (Claude) fake 2017 phone UA used by 77.67.9.201
     );
 
-    $initialstr = $USER_AGENT;
-    $newstr = str_replace($crawlers, '', $USER_AGENT);         // replace any portion of USER_AGENT with '' if match
-    if (strcmp($initialstr, $newstr) !== 0) {
-        return true;
-    }   // found a crawler - there was a match
-    else {
-        return false;
-    }                                      // no crawler
-
-
+    $ua = strtolower(trim((string) $USER_AGENT));  // (Claude) case-insensitive; null-safe
+    if ($ua === '') {                             // (Claude) real browsers always send a user agent
+        return true;                              // (Claude)
+    }                                             // (Claude)
+    foreach ($crawlers as $pattern) {             // (Claude) found a crawler if any pattern matches
+        if (strpos($ua, strtolower($pattern)) !== false) { // (Claude)
+            return true;                          // (Claude)
+        }                                         // (Claude)
+    }                                             // (Claude)
+    return false;                                 // (Claude) no crawler
 }
 
 // add_action('init', 'start_session', 1);  //************************2026 ChatGPT alternative start session
