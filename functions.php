@@ -105,6 +105,17 @@ function jrm_get_table($table, $like, $sum, $col, $index = null, $orderby = null
     if ($table == "") {
         return;
     }
+
+    // Non-admins may only read the public data tables                                  (Claude)
+    $is_admin_user = current_user_can('manage_options');                                // (Claude)
+    $public_tables = array('CBAggregate', 'MTN_Table', 'ABS', 'Misc', 'CDN_Legacy', 'USD_Issuance'); // (Claude)
+    if (!$is_admin_user && !in_array($table, $public_tables, true)) {                   // (Claude)
+        error_log('[jrm_get_table] Blocked table for non-admin: ' . $table);            // (Claude)
+        echo '</tbody></table>';                                                        // (Claude)
+        return;                                                                         // (Claude)
+    }                                                                                   // (Claude)
+    $table = str_replace('`', '``', $table);    // (Claude) escape backticks for SHOW COLUMNS below
+
     $colnames = [];
     $query = $wpdb->prepare(
     'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
@@ -133,6 +144,11 @@ $zcol = count($colnames);
         $like = " ".$like; //add buffer space
     }
     $query = "SELECT * FROM ".$table.$like.$orderby;
+    if (!$is_admin_user && !jrm_is_read_only_sql($query)) {                             // (Claude)
+        error_log('[jrm_get_table] Blocked non-read-only query: ' . $query);           // (Claude)
+        echo '</tbody></table>';                                                        // (Claude)
+        return;                                                                         // (Claude)
+    }                                                                                   // (Claude)
     $results = $wpdb->get_results($query, ARRAY_N);
     $z = count($results);
     $num_deals = 0;
@@ -206,6 +222,31 @@ $zcol = count($colnames);
     jrm_record_inquiry($like, $date);
     return;
 }
+
+/*                                                                                       (Claude)
+ * function jrm_is_read_only_sql()                                                       (Claude)
+ *                                                                                       (Claude)
+ * Returns true only if $sql is a single plain SELECT. Quoted values (e.g. '%Union%')    (Claude)
+ * are removed first so search text cannot trip the keyword check; anything that could   (Claude)
+ * write, delete, chain statements or read other tables is rejected.                     (Claude)
+ */                                                                                   // (Claude)
+function jrm_is_read_only_sql($sql)                                                   // (Claude)
+{                                                                                     // (Claude)
+    // strip quoted string literals, honouring \' and '' escapes                         (Claude)
+    $bare = preg_replace("/'(?:[^'\\\\]|\\\\.|'')*'|\"(?:[^\"\\\\]|\\\\.|\"\")*\"/s", "''", $sql); // (Claude)
+    if ($bare === null || stripos(ltrim($bare), 'SELECT ') !== 0) {                   // (Claude)
+        return false;                                                                 // (Claude)
+    }                                                                                 // (Claude)
+    // no statement chaining or comments                                                 (Claude)
+    if (preg_match('/;|--|#|\/\*/', $bare)) {                                         // (Claude)
+        return false;                                                                 // (Claude)
+    }                                                                                 // (Claude)
+    // no write/DDL keywords, subqueries into other tables, or file/timing functions     (Claude)
+    $blocked = 'INSERT|UPDATE|DELETE|REPLACE|DROP|ALTER|CREATE|RENAME|TRUNCATE|GRANT|REVOKE' // (Claude)
+             . '|LOCK|HANDLER|CALL|DO|SET|UNION|INTO|OUTFILE|DUMPFILE|LOAD_FILE|SLEEP'       // (Claude)
+             . '|BENCHMARK|INFORMATION_SCHEMA|MYSQL|PERFORMANCE_SCHEMA|SELECT\s.*\bSELECT'; // (Claude)
+    return !preg_match('/\b(?:' . $blocked . ')\b/is', $bare);                        // (Claude)
+}                                                                                     // (Claude)
 /***
  *=======================================================================================
  ****************************************************************************************
