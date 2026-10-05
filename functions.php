@@ -366,10 +366,12 @@ function crawlerDetect($USER_AGENT)
         'HTTPClient'=> 'HttpClient',              // (Claude) Apache/okhttp clients
         'Preview'   => 'preview',                 // (Claude) link-preview fetchers
         'FakeS8'    => 'Android 7.0; SM-G892A',   // (Claude) fake 2017 phone UA used by 77.67.9.201
+        'WordPress' => 'WordPress/',              // (Claude) the site's own cron / loopback requests
+        'FakeiOS'   => 'iPhone OS 13_2_3',        // (Claude) fake 2019 iPhone UA used by Tencent scrapers
     );
 
     $ua = strtolower(trim((string) $USER_AGENT));  // (Claude) case-insensitive; null-safe
-    if ($ua === '') {                             // (Claude) real browsers always send a user agent
+    if ($ua === '' || $ua === 'mozilla/5.0') {    // (Claude) real browsers always send a full user agent
         return true;                              // (Claude)
     }                                             // (Claude)
     foreach ($crawlers as $pattern) {             // (Claude) found a crawler if any pattern matches
