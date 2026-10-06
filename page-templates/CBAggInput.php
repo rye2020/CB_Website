@@ -151,6 +151,7 @@ Currency: <select name="currency" style="position:absolute; left:300px; width:19
 <option value='£'>£</option>
 <option value='CHF'>CHF</option>
 <option value='NOK'>NOK</option>
+<option value='SGD'>SGD</option>option>
 </select>
 <br /><br />
 Amount: <input type="text" name="amount" style="position:absolute; left:300px;" placeholder="Input Amount: 000,000's"><br><br>
