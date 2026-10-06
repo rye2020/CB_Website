@@ -13,6 +13,7 @@ echo "<option value='A$'>A$</option>";
 echo "<option value='CHF'>CHF</option>";
 echo "<option value='NOK'>NOK</option>";
 echo "<option value='NOT $'>NOT $</option>";
+echo "<option value='SGD'>SGD</option>"
 echo "</select></div>";
  } 
  ?>
