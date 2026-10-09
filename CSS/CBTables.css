@@ -102,5 +102,26 @@ table.t1CanadianCBD td:nth-child(11) {  text-align: right; } /* align type right
 	margin: 0;
 	padding: 0 0 0 0;
 	{
+.rpwe-block li {
+       margin-bottom: 0 !important;
+       margin-left: 10px;
+       padding-bottom: 0 !important;
+       list-style-type: disc !important;
+       font-weight: bold !important;
+	}
+.rpwe-clearfix:before, .rpwe-clearfix:after {
+       content: none!important;
+	}
+.rpwe-time {
+       color: #7c7c7c !important;
+	}
+.rpwe-title {
+       display: inline;
+	}
+.rpwe-block a {
+       padding-right: 1em;
+       font-weight: bold;
+	}
+
 
 /*! ---END FORMAT CB TABLES WITH RECENT POSTS-----*/
