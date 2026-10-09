@@ -16,6 +16,7 @@
 <option value='DNB Nor Boligkreditt AS'>DNB Nor Boligkreditt AS</option>
 <option value='DnB Boligkreditt'>DnB Boligkreditt</option>
 <option value='Equitable Bank Canada'>Equitable Bank Canada</option>
+<option value='Fairmont Bank of Canada'>Fairmont Bank of Canada</option>
 <option value='Fédération des caisses Desjardins du Quebec'>Fédération des caisses Desjardins du Quebec</option>
 <option value='Helaba'>Helaba</option>
 <option value='HSBC Bank Canada'>HSBC Bank Canada</option>					  
