@@ -4,7 +4,7 @@
 	}
 </style>
 <aside style="font-size:small">
-	<p style="margin:0;"><strong>Select issuance filters:</strong></p>
+	<h3 style="margin:0;"><strong>Select issuance filters:</strong></h3>
 	<style scoped>
 		select {
 			float: right;
