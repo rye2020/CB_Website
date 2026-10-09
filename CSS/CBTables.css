@@ -100,6 +100,7 @@ table.t1CanadianCBD td:nth-child(11) {  text-align: right; } /* align type right
 /*----------------------------------------------------------------------*/
 .rpwe-ul {
 	margin: 0;
+	padding: 0 0 0 20px;
 	{
 
 /*! ---END FORMAT CB TABLES WITH RECENT POSTS-----*/
