@@ -122,6 +122,10 @@ table.t1CanadianCBD td:nth-child(11) {  text-align: right; } /* align type right
        padding-right: 1em;
        font-weight: bold;
 	}
+.rpwe-block h3 {
+	margin-block-end: 15.21px
+	margin-block-start:15.21px
+	}
 
 
 /*! ---END FORMAT CB TABLES WITH RECENT POSTS-----*/
