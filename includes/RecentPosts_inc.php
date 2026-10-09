@@ -1,4 +1,4 @@
-<style>
+<style scoped>
    .rpwe-ul {
 	margin: 0;
 	padding: 0 0 0 0;
