@@ -117,8 +117,8 @@ table.t1CanadianCBD td:nth-child(11) {  text-align: right; } /* align type right
 	}
 .rpwe-li h3 {
        display: inline;
-       margin: 0 !important;
-       padding: 0 !important;
+       margin: 0 ;
+       padding: 0 ;
 	}
 .rpwe-block a {
        padding-right: 1em;
