@@ -16,7 +16,7 @@
 .rpwe-time {
        color: #7c7c7c !important;
 	}
-.rpwe-title, .rpwe-li h3 {
+.rpwe-li h3 {
        display: inline;
        margin: 0 !important;
 	}
