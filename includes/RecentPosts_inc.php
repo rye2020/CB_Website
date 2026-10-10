@@ -24,7 +24,7 @@
        font-weight: bold;
 	}
 .rpwe-title {
-	margin: 0;
+	margin: 0 !important;
 	}
  </style>
 <h3 style="text-decoration: underline; margin-bottom: 0;"><strong>Recent Posts</strong></h3>
