@@ -2,7 +2,7 @@
    .rpwe-ul {
 	margin: 0;
 	padding: 0 0 0 0;
-	{
+       }
 .rpwe-block li {
        margin-bottom: 0 !important;
        margin-left: 10px;
