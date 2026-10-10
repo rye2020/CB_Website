@@ -19,6 +19,7 @@
 .rpwe-li h3 {
        display: inline;
        margin: 0 !important;
+       padding: 0 !important;
 	}
 .rpwe-block a {
        padding-right: 1em;
