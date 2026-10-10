@@ -98,10 +98,10 @@ table.t1CanadianCBD td:nth-child(11) {  text-align: right; } /* align type right
 /*----------------------------------------------------------------------*/
 /* ---------AGGREGATE CB TABLES WITH RECENT POSTS-----------------------*/
 /*----------------------------------------------------------------------*/
-   .rpwe-ul {
-	margin: 0;
-	padding: 0 0 0 0;
-       }
+.rpwe-ul {
+		margin: 0;
+		padding: 0 0 0 0;
+    }
 .rpwe-block li {
        margin-bottom: 0 !important;
        margin-left: 10px;
