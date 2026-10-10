@@ -16,15 +16,13 @@
 .rpwe-time {
        color: #7c7c7c !important;
 	}
-.rpwe-title {
+.rpwe-title, .rpwe-li h3 {
        display: inline;
+       margin: 0 !important;
 	}
 .rpwe-block a {
        padding-right: 1em;
        font-weight: bold;
-	}
-.rpwe-title {
-	margin: 0 !important;
 	}
  </style>
 <h3 style="text-decoration: underline; margin-bottom: 0;"><strong>Recent Posts</strong></h3>
