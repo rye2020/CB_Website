@@ -110,10 +110,10 @@ table.t1CanadianCBD td:nth-child(11) {  text-align: right; } /* align type right
        font-weight: bold !important;
 	}
 .rpwe-clearfix:before, .rpwe-clearfix:after {
-       content: none!important;
+       content: none;
 	}
 .rpwe-time {
-       color: #7c7c7c !important;
+       color: #7c7c7c !;
 	}
 .rpwe-li h3 {
        display: inline;
