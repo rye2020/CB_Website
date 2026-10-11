@@ -55,47 +55,50 @@ $file = basename(__FILE__) . PHP_EOL;
 
          <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
 
-         <!----------THIS IS A PRICING DATE TABLE------------------>
-         <!--***************************************************************************************-->
-         <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
-         <!--***************************************************************************************-->
-         <table class="t1CanadianCBD aggregateCB sortable" ; style="margin-left: 0; ">
+         <div class="bond-table-with-filters">
 
-            <thead>
-               <tr>
-                  <th><strong>Pricing</strong></th>
-                  <th><strong>Issuer</strong></th>
-                  <th><strong>Region</strong></th>
-                  <th><strong>Series</strong></th>
-                  <th><strong>Cur.</strong></th>
-                  <th><strong>(mm)</strong></th>
-                  <th><strong>Coupon</strong></th>
-                  <th><strong>Maturity</strong></th>
-                  <th><strong>Tenor</strong></th>
-                  <th><strong>Spread</strong></th>
-                  <th><strong>Type</strong></th>
-               </tr>
-            </thead>
-            <tbody>
+            <!----------THIS IS A PRICING DATE TABLE------------------>
+            <!--***************************************************************************************-->
+            <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
+            <!--***************************************************************************************-->
+            <table class="t1CanadianCBD aggregateCB sortable" ; style="margin-left: 0; ">
+
+               <thead>
+                  <tr>
+                     <th><strong>Pricing</strong></th>
+                     <th><strong>Issuer</strong></th>
+                     <th><strong>Region</strong></th>
+                     <th><strong>Series</strong></th>
+                     <th><strong>Cur.</strong></th>
+                     <th><strong>(mm)</strong></th>
+                     <th><strong>Coupon</strong></th>
+                     <th><strong>Maturity</strong></th>
+                     <th><strong>Tenor</strong></th>
+                     <th><strong>Spread</strong></th>
+                     <th><strong>Type</strong></th>
+                  </tr>
+               </thead>
+               <tbody>
 
 
-               <?php
-               jrm_get_table('CBAggregate', $like, 'yes', 6, 'NO', 'Date DESC, Issuer ASC', 0);
-               ?>
-            </tbody>
-         </table>
+                  <?php
+                  jrm_get_table('CBAggregate', $like, 'yes', 6, 'NO', 'Date DESC, Issuer ASC', 0);
+                  ?>
+               </tbody>
+            </table>
 
+            <div id="jmWrap">
+               <div id="jmfilter" style="width:250px; ">
+                  <?php include(get_stylesheet_directory() . '/includes/FilterAGGform.php'); ?>
+                  <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
+               </div>
+            </div> <!-- End jmWrap-->
+         </div>
       </div>
+   </div> <!-- End top -->
+</div> <!-- End top-container -->
 
-      <div id="jmWrap">
-      <div id="jmfilter" style="width:250px; ">
-         <br><br><br><br>
-         <?php include(get_stylesheet_directory() . '/includes/FilterAGGform.php'); ?>
-         <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
-      </div>
-      </div>  <!-- End jmWrap-->
-</div>
-<?php echo do_shortcode("[jpshare]"); ?>
-<?php
-get_footer();
-?>
+   <?php echo do_shortcode("[jpshare]"); ?>
+   <?php
+   get_footer();
+   ?>
