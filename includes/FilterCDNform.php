@@ -30,7 +30,7 @@
 		<input type='hidden' name="countryselect" value="Canada" />
 		<div class="Filter_select">
 			<input type='submit' name='SubmitCDN' value='Submit' />
-		</div>
+		</div> <!-- End filter_select-->
 	</div> <!--End data-filter-container-->
 </form>
 	
