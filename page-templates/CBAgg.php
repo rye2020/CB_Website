@@ -40,19 +40,21 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
 ?>
 
 <div id=top>
-      <div style="padding-right:20px;">
+   <div style="padding-right:20px;">
 
-         <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">
-            Updated: 12/26/2025</p>
-         <h1 class="t1USDCB">Aggregate USD and Canadian Issuance</h1>
-         <?php
-         if ($title !== "Select by ") {
-            echo '<h2 style="text-align:center; font-weight:300%;"><strong>' . $title . '</strong></h2>';
-         }
-         ?>
+      <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">
+         Updated: 12/26/2025</p>
+      <h1 class="t1USDCB">Aggregate USD and Canadian Issuance</h1>
+      <?php
+      if ($title !== "Select by ") {
+         echo '<h2 style="text-align:center; font-weight:300%;"><strong>' . $title . '</strong></h2>';
+      }
+      ?>
 
-         <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
+      <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
 
+      <div class="bond-table">
+         
          <!----------THIS IS A PRICING DATE TABLE------------------>
          <!--***************************************************************************************-->
          <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
@@ -85,16 +87,16 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
             </tbody>
          </table>
 
-      </div>
-
-      <div id="jmWrap">
-      <div id="jmfilter" style="width:250px; ">
-            <br><br><br><br>
-         <?php include(get_stylesheet_directory() . '/includes/FilterAGGform.php'); ?>
-         <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
-      </div>
-   </div>  <!-- End jmWrap-->
-</div>
+         <div id="jmWrap">
+            <div id="jmfilter" style="width:250px; ">
+                  <br><br><br><br>
+               <?php include(get_stylesheet_directory() . '/includes/FilterAGGform.php'); ?>
+               <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
+            </div> <!--End of jmfilter-->
+         </div>  <!-- End jmWrap-->
+      </div> <!--End of bond-table-->
+   </div>
+</div> <!--End of top-->
 
 <?php echo do_shortcode("[jpshare]"); ?>
 <?php
