@@ -58,7 +58,7 @@ if ($title == "Selected by ") {
          <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
 
 
-         <div class="bond-filter-with-filters">
+         <div class="bond-table-with-filters">
             <table class="t1CanadianCBD aggregateCB sortable" ; style="margin-left: 0; ">
                <!----------THIS IS A PRICING DATE TABLE------------------>
                <!--***************************************************************************************-->
