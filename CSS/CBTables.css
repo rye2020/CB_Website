@@ -11,6 +11,11 @@ div#top {
 	justify-content: center;
 }
 
+div.bond-table-with-filters {
+	display: flex;
+	gap: 20px;
+}
+
 div#BuildCBTable {
 	display: grid;
 	place-items: center;
