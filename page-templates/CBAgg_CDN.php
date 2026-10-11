@@ -93,8 +93,6 @@ if ($title == "Selected by ") {
 
             <div id="jmWrap">
                <div id="jmfilter" style="width:250px; ">
-                  <br><br><br><br>
-
                   <?php include(get_stylesheet_directory() . '/includes/FilterCDNform.php'); ?>
                   <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
                </div>
