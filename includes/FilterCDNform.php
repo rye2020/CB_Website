@@ -19,18 +19,18 @@
 			grid-rows: 7px;
 		}
 	</style>
-	<!--<form name='CDNinterest' action='/wp-content/themes/twentyeleven-child/CDN-Form.php' method='POST'> -->
-	<form name='CDNinterest' action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method='POST'>
+<!--<form name='CDNinterest' action='/wp-content/themes/twentyeleven-child/CDN-Form.php' method='POST'> -->
+<form name='CDNinterest' action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method='POST'>
 	<div class="data-filter-container">
-        <?php include ( get_stylesheet_directory() . '/includes/CDN_Issuers.php'); ?>
-		<?php
-		include ( get_stylesheet_directory() . '/includes/mat_year.php');
-		?>
+		<?php include ( get_stylesheet_directory() . '/includes/CDN_Issuers.php'); ?>
+		<?php include ( get_stylesheet_directory() . '/includes/mat_year.php');	?>
 		<input type="hidden" name="action" value="cdn_interest_form">
 		<input type='hidden' name='file' value="<?php echo $file; ?>">
 		<input type='hidden' name='filepath' value='<?php echo $filepath; ?>'>
 		<input type='hidden' name="countryselect" value="Canada" />
 		<div class="Filter_select">
-		<p><input type='submit' name='SubmitCDN' value='Submit' /></p>
-	</form>
+			<input type='submit' name='SubmitCDN' value='Submit' />
+		</div>
+	</div> <!--End data-filter-container-->
+</form>
 	
