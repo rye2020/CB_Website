@@ -40,7 +40,7 @@ if (isset($_POST['Submitusd'])) {
     $file = $_POST['file'];
     $filepath = $_POST['filepath'];
 
-    $issuer = $_POST['issuerinterest'];
+    $issuer = $_POST['issuerselect'];
     if ($issuer !== "") {
         if ($like !== "WHERE ") {
             $like = $like . " AND ";
@@ -182,9 +182,6 @@ if (isset($_POST['Submitusd'])) {
     $_SESSION["jrm_form_elements"]['issueyear'] = $issueyear;
     $_SESSION["jrm_form_elements"]['page'] = $file;
 
-    // header ('Location: /wp-content/themes/twentyeleven-child/page-templates/CBAgg_USD.php/');
-    // header ('Connections: close');
-    // exit;
     return;
 }
 ?>
