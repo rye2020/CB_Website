@@ -1,6 +1,10 @@
+/*----------------------------------------
+*      include FilterUSDform.php         *
+*                                        *
+-----------------------------------------*/
 <style scoped>
 	div#secondary {
-		margin-right: 0;
+		margin-right: 0;</style>
 	}
 </style>
 <aside style="font-size:small">
@@ -13,24 +17,36 @@
 		input {
 			float: right;
 		}
+	.data-filter-container {
+         display: grid;
+         gap: .25em;
+         grid-rows: 7px;
+      }
 	</style>
-	<!--<form name='USDinterest' action='/wp-content/themes/twentyeleven-child/USD-Form.php' method='POST'> -->
-	<form name='USDinterest' action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method='POST'>
-	<label for='issuerinterest'>Issuer</label>
-<select name='issuerinterest' style="width:60%;">
-<option value=''> </option>
-<?php include ( get_stylesheet_directory() . '/includes/Global_Issuers.php'); ?>
-<label for='countryselect'>Country</label>
-<select name='countryselect' style="width:60%">
-<option value=''> </option>
-<option value='NOT Canada'>NOT Canada</option>
-	<?php
-		include(get_stylesheet_directory() . '/includes/Global_Countries.php');
-		include ( get_stylesheet_directory() . '/includes/mat_year.php');
-		?>
-		<input type="hidden" name="action" value="usd_interest_form">
-		<input type='hidden' name='file' value="<?php echo $file; ?>">
-		<input type='hidden' name='filepath' value='<?php echo $filepath; ?>'>
-		<p><input type='submit' name='Submitusd' value='Submit' /></p>
-	</form>
+
+   <form name='USDinterest' action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method='POST'>
+      <div class="data-filter-container">
+         <div class="filter_select"><label for='issuerselect'>Issuer</label>
+            <select name='issuerselect' style="width:60%;">
+               <option value=''> </option>
+               <?php include("Global_Issuers.php"); ?>
+            </select>
+         </div>
+         <div class="filter_select"><label for='countryselect'>Country</label>
+            <select name='countryselect' style="width:60%;">
+               <option value=''> </option>
+               <option value='NOT Canada'>NOT Canada</option>
+               <?php include("Global_Countries.php"); ?>
+            </select>
+         </div>
+         <?php include("mat_year.php"); ?>
+
+         <input type="hidden" name="action" value="agg_interest_form">
+         <input type='hidden' name='file' value="<?php echo $file; ?>">
+         <input type='hidden' name='filepath' value='<?php echo $filepath; ?>'>
+         <div class="Filter_select">
+		 	<input type='submit' name='SubmitAGG' value='Submit' />
+		<div> <!--End filter_select-->
+      </div> <!--End data-filter-container-->
+   </form>
 	
