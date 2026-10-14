@@ -4,12 +4,13 @@
 ----------------------------------------->
 <style scoped>
 	div#secondary {
-		margin-right: 0;</style>
+		margin-right: 0;
 	}
 </style>
+
 <aside style="font-size:small">
 	<h3 style="margin:0;"><strong>Select issuance filters:</strong></h3>
-	<style scoped>
+<style scoped>
 		select {
 			float: right;
 		}
@@ -22,7 +23,7 @@
          gap: .25em;
          grid-rows: 7px;
       }
-	</style>
+</style>
 
    <form name='USDinterest' action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method='POST'>
       <div class="data-filter-container">
