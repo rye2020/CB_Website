@@ -42,9 +42,6 @@ if (isset($_POST['Submitusd'])) {
 
     $issuer = $_POST['issuerselect'];
     if ($issuer !== "") {
-        if ($like !== "WHERE ") {
-            $like = $like . " AND ";
-        }
         $like = $like . "Issuer LIKE '%" . $issuer . "%'";
         $title = $title . "Issuer ";
     }
