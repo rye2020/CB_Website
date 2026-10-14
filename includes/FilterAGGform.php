@@ -48,6 +48,6 @@
          <input type='hidden' name='filepath' value='<?php echo $filepath; ?>'>
          <div class="Filter_select">
 		 	<input type='submit' name='SubmitAGG' value='Submit' />
-		<div> <!--End filter_select-->
+		 </div> <!--End filter_select-->
       </div> <!--End data-filter-container-->
    </form>
