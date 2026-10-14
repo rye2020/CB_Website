@@ -5,9 +5,10 @@
  * developing the query LIKE field for USD CB inquiries.
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
+ * @subpackage TwentyTwentyOne_Child
  * @ author J.R.Marlatt
  * version 1.1 May 1. 2021
+ * version 2 October 13, 2026
  * 
  */
 
