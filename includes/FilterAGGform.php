@@ -1,3 +1,7 @@
+/*----------------------------------------
+*      include FilterAGGform.php         *
+*                                        *
+-----------------------------------------*/
 <style scoped>
    div#secondary {
       margin-right: 0;
