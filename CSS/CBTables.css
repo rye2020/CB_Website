@@ -13,6 +13,7 @@ div#top {
 
 div.bond-table-with-filters {
 	display: flex;
+	align-items: flex-start;
 	gap: 20px;
 }
 
