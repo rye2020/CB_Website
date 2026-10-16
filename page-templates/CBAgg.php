@@ -40,7 +40,7 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
 ?>
 
 <div id=top>
-   <div style="padding-right:20px;">
+   <div class="tblHeader" style="padding-right:20px;">
 
       <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">
          Updated: 12/26/2025</p>
@@ -52,49 +52,49 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
       ?>
 
       <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
+   </div> <!--End of tblHeader-->
 
-      <div class="bond-table-with-filters">
-         
-         <!----------THIS IS A PRICING DATE TABLE------------------>
-         <!--***************************************************************************************-->
-         <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
-         <!--***************************************************************************************-->
-         <table class="t1CanadianCBD aggregateCB sortable" style="margin-left: 0; ">
-            <thead>
-               <tr>
-                  <th><strong>Pricing</strong></th>
-                  <th><strong>Issuer</strong></th>
-                  <th><strong>Region</strong></th>
-                  <th><strong>Series</strong></th>
-                  <th><strong>Cur.</strong></th>
-                  <th><strong>(mm)</strong></th>
-                  <th><strong>Coupon</strong></th>
-                  <th><strong>Maturity</strong></th>
-                  <th><strong>Tenor</strong></th>
-                  <th><strong>Spread</strong></th>
-                  <th><strong>Type</strong></th>
-               </tr>
-            </thead>
-            <tbody>
+   <div class="bond-table-with-filters">
+      
+      <!----------THIS IS A PRICING DATE TABLE------------------>
+      <!--***************************************************************************************-->
+      <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
+      <!--***************************************************************************************-->
+      <table class="t1CanadianCBD aggregateCB sortable" style="margin-left: 0; ">
+         <thead>
+            <tr>
+               <th><strong>Pricing</strong></th>
+               <th><strong>Issuer</strong></th>
+               <th><strong>Region</strong></th>
+               <th><strong>Series</strong></th>
+               <th><strong>Cur.</strong></th>
+               <th><strong>(mm)</strong></th>
+               <th><strong>Coupon</strong></th>
+               <th><strong>Maturity</strong></th>
+               <th><strong>Tenor</strong></th>
+               <th><strong>Spread</strong></th>
+               <th><strong>Type</strong></th>
+            </tr>
+         </thead>
+         <tbody>
 
-               <?php
-               if (($currency !== "" && $currency !== "NOT $") OR $country == "NOT Canada") {
-                  jrm_get_table('CBAggregate', $like, 'yes', 6, 'NO', 'Date DESC, Issuer ASC', 0);
-               } else {
-                  jrm_get_table('CBAggregate', $like, 'no', 0, 'NO', 'Date DESC, Issuer ASC', 0);
-               }
-               ?>
-            </tbody>
-         </table>
+            <?php
+            if (($currency !== "" && $currency !== "NOT $") OR $country == "NOT Canada") {
+               jrm_get_table('CBAggregate', $like, 'yes', 6, 'NO', 'Date DESC, Issuer ASC', 0);
+            } else {
+               jrm_get_table('CBAggregate', $like, 'no', 0, 'NO', 'Date DESC, Issuer ASC', 0);
+            }
+            ?>
+         </tbody>
+      </table>
 
-         <div id="jmWrap">
-            <div id="jmfilter" style="width:250px; ">
-               <?php include(get_stylesheet_directory() . '/includes/FilterAGGform.php'); ?>
-               <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
-            </div> <!--End of jmfilter-->
-         </div>  <!-- End jmWrap-->
-      </div> <!--End of bond-table-->
-   </div>
+      <div id="jmWrap">
+         <div id="jmfilter" style="width:250px; ">
+            <?php include(get_stylesheet_directory() . '/includes/FilterAGGform.php'); ?>
+            <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
+         </div> <!--End of jmfilter-->
+      </div>  <!-- End jmWrap-->
+   </div> <!--End of bond-table-->
 </div> <!--End of top-->
 
 <?php echo do_shortcode("[jpshare]"); ?>
