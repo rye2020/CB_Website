@@ -5,6 +5,7 @@
 /*----------------------------------------------------------------------*/
 
 div#top {
+	display: flex;
 	padding-bottom: 3em;
 	justify-content: space-between;
 	justify-content: center;
