@@ -54,7 +54,7 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
       <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
    </div> <!--End of tblHeader-->
 
-   <div class="bond-table-with-filters" style="float:left;">
+   <div class="bond-table-with-filters">
       
       <!----------THIS IS A PRICING DATE TABLE------------------>
       <!--***************************************************************************************-->
