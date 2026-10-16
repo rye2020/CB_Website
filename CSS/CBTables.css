@@ -18,6 +18,8 @@ div.tblHeader {
 }
 
 div.bond-table-with-filters {
+	clear: both;
+	float:left;
 	display: flex;
 	align-items: flex-start;
 	gap: 20px;
