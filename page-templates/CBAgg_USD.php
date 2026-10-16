@@ -42,7 +42,8 @@ $file = basename(__FILE__) . PHP_EOL;
 
 <div id="top-container">
    <div id=top>
-      <div style="padding-right:20px;">
+      <div class="bond-table-with-filters agg-grid">  <!-- (Claude) -->
+      <div class="tblHeader">  <!-- (Claude) -->
 
          <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">
             Updated: 3/12/2022</p>
@@ -54,8 +55,7 @@ $file = basename(__FILE__) . PHP_EOL;
          ?>
 
          <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
-
-         <div class="bond-table-with-filters">
+      </div> <!-- End tblHeader (Claude) -->
 
             <!----------THIS IS A PRICING DATE TABLE------------------>
             <!--***************************************************************************************-->
@@ -93,8 +93,7 @@ $file = basename(__FILE__) . PHP_EOL;
                   <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
                </div>
             </div> <!-- End jmWrap-->
-         </div>
-      </div>
+      </div> <!-- End bond-table-with-filters (Claude) -->
    </div> <!-- End top -->
 </div> <!-- End top-container -->
 

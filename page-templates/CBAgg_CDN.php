@@ -46,7 +46,8 @@ if ($title == "Selected by ") {
 ?>
 <div id="top-container">
    <div id=top>
-      <div style="padding-right:20px;">
+      <div class="bond-table-with-filters agg-grid">  <!-- (Claude) -->
+      <div class="tblHeader">  <!-- (Claude) -->
          <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">
             Updated: 2/27/2022</p>
          <h1 class="t1USDCB">Canadian Covered Bond Issuance</h1>
@@ -56,9 +57,8 @@ if ($title == "Selected by ") {
          }
          ?>
          <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
+      </div> <!-- End tblHeader (Claude) -->
 
-
-         <div class="bond-table-with-filters">
             <table class="t1CanadianCBD aggregateCB sortable" ; style="margin-left: 0; ">
                <!----------THIS IS A PRICING DATE TABLE------------------>
                <!--***************************************************************************************-->
@@ -97,8 +97,7 @@ if ($title == "Selected by ") {
                   <?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); ?>
                </div>
             </div>
-         </div>
-      </div>            
+      </div> <!-- End bond-table-with-filters (Claude) -->
    </div>
 </div>
 
