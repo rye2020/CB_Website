@@ -24,6 +24,18 @@ div.bond-table-with-filters {
 	gap: 20px;
 }
 
+/* CBAgg: header centered over table, filters beside table (Claude) */
+div.bond-table-with-filters.agg-grid {          /* (Claude) */
+	display: grid;                              /* (Claude) */
+	grid-template-columns: auto auto;           /* (Claude) */
+	column-gap: 20px;                           /* (Claude) */
+	align-items: start;                         /* (Claude) */
+	float: none;                                /* (Claude) */
+}                                               /* (Claude) */
+.agg-grid > .tblHeader { grid-column: 1; grid-row: 1; padding: 0; text-align: center; } /* (Claude) */
+.agg-grid > table      { grid-column: 1; grid-row: 2; }                                 /* (Claude) */
+.agg-grid > #jmWrap    { grid-column: 2; grid-row: 2; }                                 /* (Claude) */
+
 div#BuildCBTable {
 	display: grid;
 	place-items: center;

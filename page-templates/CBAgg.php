@@ -40,7 +40,8 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
 ?>
 
 <div id=top>
-   <div class="tblHeader" style="padding-right:20px;">
+   <div class="bond-table-with-filters agg-grid">  <!-- (Claude) -->
+   <div class="tblHeader">  <!-- (Claude) -->
 
       <p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">
          Updated: 12/26/2025</p>
@@ -54,8 +55,6 @@ include( get_stylesheet_directory() . '/includes/FilterAGGtest.php');
       <p class="jmsorter" ; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
    </div> <!--End of tblHeader-->
 
-   <div class="bond-table-with-filters">
-      
       <!----------THIS IS A PRICING DATE TABLE------------------>
       <!--***************************************************************************************-->
       <!--*******************************AGGREGATE ISSUANCE DATA*********************************-->
