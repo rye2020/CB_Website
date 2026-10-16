@@ -11,6 +11,10 @@ div#top {
 	justify-content: center;
 }
 
+div.tblHeader {
+	max-width: 1330px:
+}
+
 div.bond-table-with-filters {
 	display: flex;
 	align-items: flex-start;
