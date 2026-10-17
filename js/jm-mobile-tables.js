@@ -25,20 +25,39 @@ function initFilterPanel() {
 				myDiv.remove();
 			}
 			if (myTopDiv) myTopDiv.style.paddingLeft = '10px';
+			if (myTopDiv) myTopDiv.classList.remove('jm-align-menu');  // (Claude)
 		} else {
 			if (!myDiv) {
 				myWrap.innerHTML = savedFilterHTML;
 			}
-			if (myTopDiv) myTopDiv.style.paddingLeft = '40px';
+			if (myTopDiv) alignTopToMenu();  // (Claude) was paddingLeft = '40px'
 		}
 	}
+
+	// Left-align the table with the first word of the menu (Claude)
+	function alignTopToMenu() {                                                      // (Claude)
+		var link = document.querySelector('#access ul.menu > li:first-child > a');  // (Claude)
+		myTopDiv.classList.add('jm-align-menu');  /* drop auto-margin centering */   // (Claude)
+		myTopDiv.style.paddingLeft = '0px';                                          // (Claude)
+		if (!link) { myTopDiv.style.paddingLeft = '10px'; return; }                  // (Claude)
+		var textLeft = link.getBoundingClientRect().left +                           // (Claude)
+			parseFloat(getComputedStyle(link).paddingLeft || 0);                     // (Claude)
+		var offset = textLeft - myTopDiv.getBoundingClientRect().left;               // (Claude)
+		myTopDiv.style.paddingLeft = Math.max(0, Math.round(offset)) + 'px';         // (Claude)
+	}                                                                                // (Claude)
+
+	// Re-run after the browser finishes laying out the new orientation (Claude)
+	function onOrientationChange() {                // (Claude)
+		updateFilterPanel();                         // (Claude)
+		setTimeout(updateFilterPanel, 250);          // (Claude)
+	}                                                // (Claude)
 
 	updateFilterPanel(); // run once immediately
 
 	if (screen.orientation && screen.orientation.addEventListener) {
-		screen.orientation.addEventListener('change', updateFilterPanel);
+		screen.orientation.addEventListener('change', onOrientationChange);  // (Claude)
 	} else {
-		window.addEventListener('resize', updateFilterPanel);
+		window.addEventListener('resize', onOrientationChange);  // (Claude)
 	}
 }
 

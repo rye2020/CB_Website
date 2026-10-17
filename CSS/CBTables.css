@@ -16,6 +16,11 @@ div#top > * {                  /* (Claude) */
 	margin-right: auto;        /* (Claude) */
 }                              /* (Claude) */
 
+/* Mobile landscape: jm-mobile-tables.js pads #top to the menu's first word; no centering (Claude) */
+div#top.jm-align-menu > * {    /* (Claude) */
+	margin-left: 0;            /* (Claude) */
+}                              /* (Claude) */
+
 div.tblHeader {
 	padding-right: 260px;
 	justify-content: center;
