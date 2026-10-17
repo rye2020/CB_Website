@@ -424,7 +424,7 @@ function jm_load_page_css() {
     // HEADER: tables
     if (!empty($GLOBALS['header_tables_loaded'])) {
 
-        wp_enqueue_style('CB_Tables', get_stylesheet_directory_uri() . '/CSS/CBTables.css');
+        wp_enqueue_style('CB_Tables', get_stylesheet_directory_uri() . '/CSS/CBTables.css', array(), filemtime(get_stylesheet_directory() . '/CSS/CBTables.css')); // (Claude) cache-bust on change
         wp_enqueue_script( 'jm-mobile-tables',
             get_stylesheet_directory_uri() . '/js/jm-mobile-tables.js', array(),
             filemtime( get_stylesheet_directory() . '/js/jm-mobile-tables.js' ), // auto-bumps ver= on every file change
@@ -448,7 +448,7 @@ function jm_load_page_css() {
     // HEADER: misc
     if (!empty($GLOBALS['header_misc_loaded'])) {
 
-        wp_enqueue_style('MiscPages', get_stylesheet_directory_uri() . '/CSS/CBTables.css');
+        wp_enqueue_style('MiscPages', get_stylesheet_directory_uri() . '/CSS/CBTables.css', array(), filemtime(get_stylesheet_directory() . '/CSS/CBTables.css')); // (Claude) cache-bust on change
 
         unset($GLOBALS['header_misc_loaded']);
         return;

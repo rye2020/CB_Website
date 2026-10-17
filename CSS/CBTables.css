@@ -7,9 +7,14 @@
 div#top {
 	display: flex;
 	padding-bottom: 3em;
-	justify-content: space-between;
-	justify-content: center;
+	justify-content: flex-start;  /* (Claude) was center; centered overflow clips the left edge (iPhone landscape) */
 }
+
+/* Center via auto margins: centers when it fits, pins left when wider than the screen (Claude) */
+div#top > * {                  /* (Claude) */
+	margin-left: auto;         /* (Claude) */
+	margin-right: auto;        /* (Claude) */
+}                              /* (Claude) */
 
 div.tblHeader {
 	padding-right: 260px;
