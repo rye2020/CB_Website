@@ -8,11 +8,12 @@
  *
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
+ * @subpackage Twenty_Twenty_One_Child
  * @ author J.R.Marlatt
  * version 1.1 April 4, 2021
  * version 1.11 February 27, 2022
  * version 1.11 December 30, 2024
+	* version 2.0 October 17, 2026
  */
 
  /* 
@@ -27,7 +28,7 @@ get_header('misc');
 
 <div id=top>
 	<div style="padding-right:20px;">
-<p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 12/30/2024</p>
+<p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 10/17/2026</p>
 <h1 class="t1USDCB">ABS Issuance</h1>
 <?php 
 $like = '';
