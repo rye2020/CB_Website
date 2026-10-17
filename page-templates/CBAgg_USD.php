@@ -14,6 +14,7 @@
  * version 1.0 August 20, 2015
  * version 1.1 May 1, 2021
  * versiion 1.11 March 8, 2022
+ * version 2.0 October 17, 2026
  */
 
 // header("Expires: Sun, 25 Jul 1997 06:02:34 GMT");
