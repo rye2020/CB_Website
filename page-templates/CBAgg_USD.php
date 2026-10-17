@@ -9,7 +9,7 @@
  *
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child 
+ * @subpackage Twenty_Twenty_One_Child 
  * @ author J.R.Marlatt
  * version 1.0 August 20, 2015
  * version 1.1 May 1, 2021
