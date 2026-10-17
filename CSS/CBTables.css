@@ -16,6 +16,22 @@ div#top > * {                  /* (Claude) */
 	margin-right: auto;        /* (Claude) */
 }                              /* (Claude) */
 
+/* #main has place-items:center, which shrink-wraps and centers #top; when #top is wider    (Claude)
+   than the screen that pushes it off the left edge. Stretch it; the auto margins above center. (Claude) */
+div#top {                      /* (Claude) */
+	justify-self: stretch;     /* (Claude) */
+}                              /* (Claude) */
+
+/* Table pages in phone landscape: drop allpages.css #page 3em side padding so the     (Claude)
+   menu and table start near the screen edge instead of 45px in.                        (Claude) */
+@media only screen and (max-width: 1024px) and (orientation: landscape) {  /* (Claude) */
+	#page {                    /* (Claude) */
+		padding-left: 0;       /* (Claude) */
+		padding-right: 0;      /* (Claude) */
+		max-width: 100%;       /* (Claude) */
+	}                          /* (Claude) */
+}                              /* (Claude) */
+
 /* Mobile landscape: jm-mobile-tables.js pads #top to the menu's first word; no centering (Claude) */
 div#top.jm-align-menu > * {    /* (Claude) */
 	margin-left: 0;            /* (Claude) */
