@@ -5,7 +5,7 @@
  * developing the query LIKE field for MTN inquiries.
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
+ * @subpackage Twenty_Twenty_One_Child
  * @ author J.R.Marlatt
  * version 1.1 April 4, 2021
  */
