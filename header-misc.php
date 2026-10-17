@@ -61,7 +61,8 @@
 ?>
 <!--JRM - include sort table code -->
 <script src="/wp-includes/js/sorttable.js" type="text/javascript"></script> 
-<meta http-equiv="X-Frame-Options" content="sameorigin">  				
+<meta http-equiv="X-Frame-Options" content="sameorigin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <!-- (Claude) match header-tables: use full iPhone landscape width -->
 
 </head>
 
