@@ -385,12 +385,14 @@ button.sub-menu-toggle {
 	}
 
 	/* Menu hidden by default, shown when JS adds .nav-open to #access */
-	#access .menu-menu-a-container {
+	#access .menu-menu-a-container,
+	#access .menu-menu-cm-container {  /* (Claude) menu CM used by header-misc */
 		display: none;
 		width: 100%;
 	}
 
-	#access.nav-open .menu-menu-a-container {
+	#access.nav-open .menu-menu-a-container,
+	#access.nav-open .menu-menu-cm-container {  /* (Claude) */
 		display: block;
 	}
 

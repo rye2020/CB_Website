@@ -416,7 +416,7 @@ add_action('wp_enqueue_scripts', 'jm_load_page_css', 1);
 function jm_load_page_css() {
 // Load for every page
     wp_enqueue_style('Style', get_stylesheet_directory_uri() . '/style.css');
-    wp_enqueue_style('AllPages', get_stylesheet_directory_uri() . '/CSS/allpages.css');
+    wp_enqueue_style('AllPages', get_stylesheet_directory_uri() . '/CSS/allpages.css', array(), filemtime(get_stylesheet_directory() . '/CSS/allpages.css')); // (Claude) cache-bust on change
     wp_enqueue_script('nav-toggle', get_stylesheet_directory_uri() . '/js/nav-toggle.js', array(), filemtime(get_stylesheet_directory() . '/js/nav-toggle.js'), true);
 
 
