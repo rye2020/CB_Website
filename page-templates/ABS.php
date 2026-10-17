@@ -2,8 +2,8 @@
 /**
 * Template Name: ABS
 * Template Post Type: page
-* 
- * This is the template that displays the 
+*
+ * This is the template that displays the
  * table of  ABSData table from SQL .
  *
  *
@@ -14,23 +14,26 @@
  * version 1.11 February 27, 2022
  * version 1.11 December 30, 2024
 	* version 2.0 October 17, 2026
+ * version 2.1 October 17, 2026 (Claude) layout conformed to CBAgg.php
  */
 
- /* 
+ /*
 * When this .php is loaded directly by a 'header("Location: ")' statement it comes
 * without any WordPress engine.  Therefore, if the engine is not loaded, it must be loaded.
 *
 //require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 session_start();
 header ('Cache-Control: no-cache');*/
-get_header('misc'); 
-?>
 
-<div id=top>
-	<div style="padding-right:20px;">
-<p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 10/17/2026</p>
-<h1 class="t1USDCB">ABS Issuance</h1>
-<?php 
+// Load the mobile portrait/landscape filter-panel JS; header-misc does not enqueue it  // (Claude)
+add_action('wp_enqueue_scripts', function () {                                          // (Claude)
+	wp_enqueue_script('jm-mobile-tables',                                                // (Claude)
+		get_stylesheet_directory_uri() . '/js/jm-mobile-tables.js', array(),             // (Claude)
+		filemtime(get_stylesheet_directory() . '/js/jm-mobile-tables.js'), true);        // (Claude)
+}, 2);                                                                                   // (Claude)
+
+get_header('misc');
+
 $like = '';
 $title = '';
 
@@ -40,31 +43,41 @@ if (isset($args) & !$args['like'] ==''){
 	$like = $args['like'];
 	$title = $args['title'];
 	unset($args);
-	if ($title !== "Select by ") {
-	echo '<h2 style="text-align:center; font-weight:300%;"><strong>'.$title.'</strong></h2>' ; 
-	}
 }
 /////////////////////////////////////////
 // test if $_SESSION elements have been set
-/*if (isset ($_SESSION["jrm_form_elements"])) {   
+/*if (isset ($_SESSION["jrm_form_elements"])) {
 	// get the form input
 	$like = $_SESSION["jrm_form_elements"]['like'];
 	$title = $_SESSION["jrm_form_elements"]['title'];
 	if ($title !== "Select by ") {
-	echo '<h2 style="text-align:center; font-weight:300%;"><strong>'.$title.'</strong></h2>' ; 
+	echo '<h2 style="text-align:center; font-weight:300%;"><strong>'.$title.'</strong></h2>' ;
 		}
 
 // remove all session variables
-session_unset(); 
+session_unset();
 	}*/
 ?>
-<p class="jmsorter"; style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>
 
-<table class="t1CanadianCBD sortable"; style="margin-left: 0; float:left;">
+<div id=top>
+   <div class="bond-table-with-filters agg-grid">  <!-- (Claude) -->
+   <div class="tblHeader">  <!-- (Claude) -->
+
+<p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 10/17/2026</p>
+<h1 class="t1USDCB">ABS Issuance</h1>
+<?php
+if ($title !== '' && $title !== "Select by ") {  // (Claude)
+	echo '<h2 style="text-align:center; font-weight:300%;"><strong>'.$title.'</strong></h2>' ;
+}
+?>
+<p class="jmsorter" style="margin:0; text-align:center; color:red;"> (click on column header to sort)</p>  <!-- (Claude) -->
+   </div> <!--End of tblHeader-->  <!-- (Claude) -->
+
 <!----------THIS IS A PRICING DATE TABLE------------------>
 <!--***************************************************************************************-->
 <!--*******************************ABS ISSUANCE DATA***************************************-->
 <!--***************************************************************************************-->
+<table class="t1CanadianCBD sortable" style="margin-left: 0;">  <!-- (Claude) -->
 	<col style="width:10%">
 	<col style="width:10%">
 	<col style="width:10%">
@@ -83,30 +96,27 @@ session_unset();
    <th ><strong>Series</strong></th>
    <th ><strong>Amount</strong></th>
    <th ><strong>Maturity</strong></th>
-   <th 74><strong>Ratings</strong></th>
+   <th ><strong>Ratings</strong></th>  <!-- (Claude) removed stray "74" attribute -->
    <th ><strong>Type</strong></th>
    <th ><strong>Underwriters</strong></th>
    <th ><strong>Description</strong></th>
 </tr></thead>
 <tbody>
 
-<?php 
+<?php
 	jrm_get_table ('ABS',$like,'yes',5,'NO','Date DESC, Issuer ASC, Amount DESC', 11);
-	
+
 ?>
 </tbody>
 </table>
 
-</div>
-	
-	<div style="width:250px; ">
-	<br><br><br><br>
-
+<div id="jmWrap">  <!-- (Claude) -->
+<div id="jmfilter" style="width:250px; ">  <!-- (Claude) -->
 <style scoped>
 div#secondary {margin-right:0;}
 </style>
 <aside style="font-size:small;">
-<p style="margin:0;"><strong>Select issuance attributes:</strong></p>
+<h3 style="margin:0; text-decoration: underline;"><strong>Data Filters:</strong></h3>  <!-- (Claude) matches FilterAGGform -->
 <style scoped>
 	select {
 		float: right;
@@ -124,47 +134,23 @@ div#secondary {margin-right:0;}
 	</select>
 <br />
 
-<?php include ("mat_year_mtn.php"); ?>	
+<?php include(get_stylesheet_directory() . '/includes/mat_year_mtn.php'); // (Claude) was include("mat_year_mtn.php") ?>
 
 
 	<label for='uwselect' style="float:left; clear: both;">Underwriters</label>
 	<input type="text" name="uwselect" style="float:right; width:60%; height: 16px; font-size: 10pt;" placeholder="Underwriters" />
-	
+
 	<label for='commentselect' style="float:left; clear: both;">Description</label>
 	<input type="text" name="commentselect" style="float:right; width:60%; height: 16px; font-size: 10pt;" placeholder="Description" />
-		
+
 <input type='submit' name='Submitabs' value='Submit' style="clear: both;" /><br><br>
 </form>
+<?php include(get_stylesheet_directory() . '/includes/RecentPosts_inc.php'); // (Claude) shared Recent Posts block; closes </aside> ?>
+</div> <!--End of jmfilter-->  <!-- (Claude) -->
+</div>  <!-- End jmWrap-->  <!-- (Claude) -->
+   </div> <!--End of bond-table-->  <!-- (Claude) -->
+</div> <!--End of top-->
 
-<style scoped>
- 	.rpwe-block li {
-		margin-bottom: 0 !important;
-		margin-left: 10px;
-		padding-bottom: 0 !important;
-		list-style-type: disc !important;
-		font-weight: bold !important;
-}
-	.rpwe-clearfix:before, .rpwe-clearfix:after {
-		content: none!important;
-}
-	.rpwe-time {
-		color: #7c7c7c !important;
-}
-	.rpwe-title {
-		display: inline;
-}
-	.rpwe-block a {
-		padding-right: 1em;
-		font-weight: bold;
-}
-</style>
-<h3><strong>Recent Posts</strong></h3>
-<?php 
-    echo rpwe_get_recent_posts (array('limit' => 7, 'thumb' => false, 'styles_default' => false));
-?>
-</aside>
-			</div>
-		</div>
 <?php echo do_shortcode("[jpshare]"); ?>
 <?php
 get_footer();
