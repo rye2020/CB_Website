@@ -13,7 +13,7 @@
  * version 1.1 April 4, 2021
  * version 1.11 February 27, 2022
  * version 1.11 December 30, 2024
-	* version 2.0 October 17, 2026
+ * version 2.0 October 17, 2026
  * version 2.1 October 17, 2026 (Claude) layout conformed to CBAgg.php
  */
 
