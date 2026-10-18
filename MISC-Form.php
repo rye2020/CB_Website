@@ -5,9 +5,10 @@
  * developing the query LIKE field for MISC inquiries.
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
+ * @subpackage Twenty_Twenty_One_Child
  * @ author J.R.Marlatt
  * version 1.1 April 4. 2021
+ * version 2.0 Oxtober 17, 2026
  */
 
 session_start();
