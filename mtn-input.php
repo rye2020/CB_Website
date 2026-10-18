@@ -8,10 +8,11 @@
  *
  *
  * @package WordPress
- * @subpackage Twenty_Eleven_Child
+ * @subpackage Twenty_Twenty_One_Child
  * @ author J.R.Marlatt
  * version 1.0 January 6, 2016
  * version 1.2 March 17, 2023
+ * version 2.0 October 17, 2026
  */
 
 if ( ! current_user_can('manage_options') ) {   // (Claude) admin-only page
@@ -21,7 +22,7 @@ if ( ! current_user_can('manage_options') ) {   // (Claude) admin-only page
 get_header('tables'); ?>
 
 <div style="width:100%;">
-<p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 01/15/2016</p>
+<p style="font-family:'Georgia';font-variant:small-caps; font-size:80%; font-weight:700; margin: 0 0 0 0;">Updated: 10/17/2026</p>
 <h1 class="t1USDCB";>Input a New MTN Record</h1>
 <hr>
 
