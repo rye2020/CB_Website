@@ -8,7 +8,7 @@
  * @subpackage Twenty_Twenty_One_Child
  * @ author J.R.Marlatt
  * version 1.1 April 4. 2021
-	* version 2.0 October 10, 2026
+ * version 2.0 October 10, 2026
  */
 
   
