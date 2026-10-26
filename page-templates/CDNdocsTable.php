@@ -216,7 +216,21 @@ get_header("CBDocs" ); ?>
         <td><a href="http://www.sec.gov/cgi-bin/browse-edgar?company=RBC+Covered+Bond+Guarantor&match=&CIK=&filenum=&State=&Country=&SIC=&owner=exclude&Find=Find+Companies&action=getcompany" target="_blank" rel="noopener noreferrer">Form 10-Ds etc</a></td>
         <td>&bull;</td>
         </tr>
-
+    <!--------------------------EDGAR Landing Page------------------------->
+     <tr>
+        <td >EDGAR Landing Page</td>
+        <td>&bull</td>
+        <td>&bull</td>
+        <td>&bull;</td>
+        <td>&bull;</td>
+        <td>&bull;</td> 
+        <td>&bull;</td> 
+        <td>&bull;</td> 
+        <td>&bull;</td>
+        <td><a href="https://www.sec.gov/edgar/browse/?CIK=1550369" target="_blank" rel="noopener noreferrer">Form 10-Ds etc</a></td>
+        <td>&bull;</td>
+        </tr>
+    
       <tr style="text-align:center">
        <th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th>
     </tr>
