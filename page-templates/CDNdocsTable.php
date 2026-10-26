@@ -219,8 +219,8 @@ get_header("CBDocs" ); ?>
     <!--------------------------EDGAR Landing Page------------------------->
      <tr>
         <td >EDGAR Landing Page</td>
-        <td>&bull</td>
-        <td>&bull</td>
+        <td>&bull;</td>
+        <td>&bull;</td>
         <td>&bull;</td>
         <td>&bull;</td>
         <td>&bull;</td> 
