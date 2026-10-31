@@ -36,9 +36,9 @@ get_header(); ?>
 		        <ul>
                     <?php wp_get_archives( array(
 		'type'		=>'postbypost', 
+		'post_type'	=> 'post',
 		'order'		=>'DESC',
 		'after'		=> ' ',
-		'post_type'	=> 'post',
 		)
 	); ?>
                 </ul>
