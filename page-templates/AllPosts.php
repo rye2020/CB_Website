@@ -15,7 +15,9 @@ get_header(); ?>
         <style scoped>
            #map-container {
               background: white; 
-              width: 100%;}
+              width: 100%;
+			   max-width: 1600px;
+		   }
            #jrmarchive {
               background: lightblue; }
            #secondary {
@@ -25,10 +27,10 @@ get_header(); ?>
 
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		
-		<?php get_search_form(); ?>
+
 
     <div id="map-container">
-		<div id="jrmarchive" class="j1col2no" > 
+		<div id="jrmarchive" class="j1col2no"> 
 
 		     <h2><strong>Posts</strong></h2>
 		        <ul>
