@@ -16,7 +16,7 @@ get_header(); ?>
            #map-container {
               background: white; 
               width: 100%;
-			  max-width: 1000px;
+			  max-width: 1200px;
 		   }
            #jrmarchive {
               background: lightblue; }
