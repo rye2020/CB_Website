@@ -42,8 +42,8 @@ get_header(); ?>
 						)
 					); ?>
                 </ul>
-  		     <br><br>
 		</div><!-- #jmarchive -->
+		</br></br>
 	</div><!-- #map-container -->
 
 <?php get_footer(); ?>
