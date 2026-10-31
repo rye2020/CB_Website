@@ -9,7 +9,7 @@
  * @package WordPress
  * @subpackage Twenty_Eleven_Child
  * @since Twenty Eleven_Child 1.0
- *    3-01-2026
+ * Version October 30, 2026
  */
 get_header(); ?>
         <style scoped>
@@ -31,21 +31,19 @@ get_header(); ?>
 
     <div id="map-container">
 		<div id="jrmarchive" class="j1col2no" > 
-			<ul>
-		     <h2><li><strong>Posts</strong></li></h2>
+
+		     <h2><strong>Posts</strong></h2>
 		        <ul>
                     <?php wp_get_archives( array(
-		'type'		=>'postbypost', 
-		'post_type'	=>'post',	
-	    'order'		=>'DESC',
-		'after'		=>' ',
-		)
-	); ?>
+						'type'		=>'postbypost', 
+						'order'		=>'DESC',
+						'after'		=> ' ',
+						'post_type'	=> 'post',
+						)
+					); ?>
                 </ul>
   		     <br><br>
-				</div>
-			
-<!--<?php get_sidebar(); ?>-->
-            </div><!-- #map-container -->
+		</div><!-- #jmarchive -->
+	</div><!-- #map-container -->
 
 <?php get_footer(); ?>
