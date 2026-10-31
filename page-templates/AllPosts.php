@@ -23,11 +23,9 @@ get_header(); ?>
               float: right;}
            </style>
 
-		<!--<?php the_post(); ?>-->
-
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		
-		<!--<?php get_search_form(); ?>-->
+		<?php get_search_form(); ?>
 
     <div id="map-container">
 		<div id="jrmarchive" class="j1col2no" > 
